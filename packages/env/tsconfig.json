@@ -1,0 +1,3 @@
+{
+  "extends": "@quick-share/config/tsconfig.base.json"
+}
