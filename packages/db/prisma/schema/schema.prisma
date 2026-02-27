@@ -17,7 +17,7 @@ model Job {
   location    String
   category    String
   type        String        // Full-time, Part-time, Contract, Internship
-  description String        @db.TextField
+  description String
   salary      String?
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
@@ -31,7 +31,7 @@ model Application {
   name       String
   email      String
   resumeLink String
-  coverNote  String?  @db.TextField
+  coverNote  String?
   createdAt  DateTime @default(now())
 }
 
