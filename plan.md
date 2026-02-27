@@ -1,58 +1,68 @@
 # Implementation Plan - QuickHire Job Board
 
-## Overview
+## Actual Project Structure (from better-t-stack)
 
-Job board with 3 pages: Job Listings, Job Detail, Admin Dashboard.
-Backend: Express + MongoDB (Prisma). Frontend: Next.js 16.
+```
+quick-share/
+├── apps/
+│   ├── server/          # Express backend (NOT 'api')
+│   │   └── src/
+│   │       └── index.ts
+│   └── web/             # Next.js frontend
+│       └── src/
+│           └── app/     # App Router pages
+├── packages/
+│   ├── db/              # Prisma schema
+│   │   └── prisma/
+│   │       └── schema/
+│   │           └── schema.prisma
+│   ├── env/             # Environment variables
+│   └── config/          # Shared configs
+├── eslint.config.js     # ESLint flat config (need to create)
+├── turbo.json
+└── package.json
+```
+
+**Key difference**: Backend is `apps/server` NOT `apps/api`
 
 ## Pages Required (Per Task)
 
-### 1. Job Listings Page (Public)
+1. **Job Listings Page** (`apps/web/src/app/page.tsx`)
+   - Display all jobs
+   - Search functionality
+   - Filter by category/location
+   - Responsive layout
 
-- Display all jobs
-- Search functionality
-- Filter by category and location
-- Responsive layout (mobile-first)
+2. **Job Detail Page** (`apps/web/src/app/jobs/[id]/page.tsx`)
+   - Full job description
+   - Apply form (name, email, resume link, cover note)
 
-### 2. Job Detail Page (Public)
+3. **Admin Dashboard** (`apps/web/src/app/admin/dashboard/page.tsx`)
+   - Add/delete job listings
+   - Match Figma design exactly
 
-- Full job description
-- "Apply Now" form with:
-  - Name
-  - Email
-  - Resume link (URL)
-  - Cover note
+## Backend Structure (apps/server/src/)
 
-### 3. Admin Dashboard
-
-- Add new job listings
-- Delete job listings
-- Match Figma design exactly
-
-## Phase 1: Project Setup
-
-### 1.1 Initialize Better-T-Stack
-
-```bash
-npx create-better-t-stack@latest quick-share \
-  --frontend next --backend express --runtime node \
-  --api none --auth none --payments none \
-  --database mongodb --orm prisma \
-  --package-manager npm --git \
-  --addons husky turborepo --examples none
+```
+index.ts          # Express entry
+routes/
+  jobs.ts         # Job routes
+  applications.ts # Application routes
+  auth.ts         # Auth routes
+controllers/
+  jobController.ts
+  authController.ts
+middleware/
+  auth.ts         # JWT verification
+  validation.ts   # Zod validation
+services/
+  jobService.ts
+utils/
+  prisma.ts       # Prisma client singleton
+  jwt.ts          # JWT utilities
 ```
 
-### 1.2 Configure ESLint Flat Config
-
-Create `eslint.config.js` (2026 format).
-
-### 1.3 Setup Prisma Schema
-
-Define Job and Application models.
-
-## Phase 2: Backend API
-
-### Database Schema
+## Database Schema (packages/db/prisma/schema/schema.prisma)
 
 ```prisma
 model Job {
@@ -79,9 +89,18 @@ model Application {
   coverNote  String?
   createdAt  DateTime @default(now())
 }
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+}
 ```
 
-### API Endpoints
+## API Endpoints
 
 ```
 GET    /api/jobs              - List all jobs (w/ search/filter)
@@ -92,73 +111,30 @@ POST   /api/applications      - Submit application
 POST   /api/auth/login        - Admin login
 ```
 
-### Backend Structure
-
-```
-apps/api/src/
-├── server.ts
-├── routes/
-│   ├── jobs.ts
-│   ├── applications.ts
-│   └── auth.ts
-├── controllers/
-│   ├── jobController.ts
-│   └── authController.ts
-├── middleware/
-│   ├── auth.ts
-│   └── validation.ts
-├── services/
-│   └── jobService.ts
-└── utils/
-    ├── prisma.ts
-    └── jwt.ts
-```
-
-## Phase 3: Frontend
-
-### Frontend Structure
-
-```
-apps/web/
-├── app/
-│   ├── layout.tsx
-│   ├── page.tsx          # Job listings
-│   ├── jobs/[id]/page.tsx # Job detail
-│   └── admin/
-│       ├── login/page.tsx
-│       └── dashboard/page.tsx
-├── components/
-│   ├── job/              # Job-related components
-│   ├── admin/            # Admin dashboard components
-│   └── ui/               # Shared UI components
-├── lib/
-│   ├── apiClient.ts
-│   └── utils.ts
-└── styles/globals.css
-```
-
-### Design System (From Figma)
-
-```css
-/* Colors */
---primary: #6366f1 /* Purple */ --secondary: #10b981 /* Teal */ --accent-blue: #3b82f6
-  --bg-main: #f9fafb --bg-card: #ffffff --text-primary: #1f2937 --text-secondary: #6b7280
-  /* Spacing */ p-4 /* 16px card padding */ p-6 /* 24px large padding */ rounded-md /* 8px radius */;
-```
-
 ## Implementation Order
 
-1. Setup project and configs
-2. Backend: Prisma schema + migrations
-3. Backend: Auth (JWT)
-4. Backend: Job CRUD endpoints
-5. Backend: Application submission
-6. Frontend: Shared UI components
-7. Frontend: Job listings page
-8. Frontend: Job detail + apply form
-9. Frontend: Admin login
-10. Frontend: Admin dashboard (match Figma)
-11. Testing + refinement
+1. ✅ Setup project (better-t-stack)
+2. 🔄 Setup ESLint flat config + lint-staged
+3. Setup Prisma schema + migrations
+4. Backend: Auth (JWT)
+5. Backend: Job CRUD endpoints
+6. Backend: Application submission
+7. Frontend: Shared UI components
+8. Frontend: Job listings page
+9. Frontend: Job detail + apply form
+10. Frontend: Admin login
+11. Frontend: Admin dashboard (match Figma)
+
+## NPM Scripts Available
+
+```bash
+npm run dev              # Start all apps (web on :3001, server on :3000)
+npm run dev:web          # Frontend only
+npm run dev:server       # Backend only
+npm run check-types      # TypeScript check
+npm run db:push          # Push schema to DB
+npm run db:studio        # Prisma Studio
+```
 
 ---
 

@@ -10,6 +10,9 @@
     "dev": "turbo dev",
     "build": "turbo build",
     "check-types": "turbo check-types",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "eslint . --fix",
     "dev:native": "turbo -F native dev",
     "dev:web": "turbo -F web dev",
     "dev:server": "turbo -F server dev",
@@ -25,15 +28,18 @@
     "zod": "^4.1.13"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@quick-share/config": "*",
     "@types/node": "^22.13.14",
+    "eslint": "^10.0.2",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
     "turbo": "^2.6.3",
-    "typescript": "^5"
+    "typescript": "^5",
+    "typescript-eslint": "^8.56.1"
   },
   "lint-staged": {
-    "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": ""
+    "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}": ["eslint --fix"]
   },
   "packageManager": "npm@10.9.4"
 }

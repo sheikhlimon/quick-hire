@@ -9,6 +9,13 @@
 - Complete and review each file before creating the next
 - Prevents mistakes and ensures quality
 
+### 📦 COMMIT RULE (MANDATORY)
+
+**COMMIT AFTER COMPLETING EACH FEATURE.** Before starting new work:
+- Run `git status` to check changes
+- Commit completed features with clear messages
+- NEVER let uncommitted work pile up
+
 ### 📋 PRE-WORK CHECKLIST (MANDATORY)
 
 Before writing ANY code, you MUST:
@@ -17,6 +24,7 @@ Before writing ANY code, you MUST:
 2. Read `rules.md` - Review coding standards
 3. Read `progress.md` - Check what's completed
 4. Update `progress.md` - Mark current task as `in_progress`
+5. Check git status - Commit any completed work first
 
 ### 📏 FILE SIZE GUARDRAIL
 
@@ -53,14 +61,13 @@ Monorepo:  Turborepo
 ```
 quick-share/
 ├── apps/
-│   ├── web/              # Next.js frontend
-│   └── api/              # Express backend
+│   ├── server/          # Express backend (NOT 'api')
+│   └── web/             # Next.js frontend
 ├── packages/
-│   ├── ui/               # Shared UI components
-│   ├── db/               # Prisma schema
-│   ├── config/           # Shared configs
-│   └── types/            # Shared types
-├── eslint.config.js      # Flat config
+│   ├── db/              # Prisma schema
+│   ├── env/             # Environment variables
+│   └── config/          # Shared configs
+├── eslint.config.js     # Flat config
 └── turbo.json
 ```
 
@@ -95,23 +102,24 @@ npx create-better-t-stack@latest quick-share \
 ## Quick Commands
 
 ```bash
-npm run dev              # Start web + api
-npm run dev --filter=web # Frontend only
-npm run dev --filter=api # Backend only
-npx prisma migrate dev   # DB migrations
-npm run lint             # Lint (auto-runs on commit)
+npm run dev              # Start web + server
+npm run dev:web          # Frontend only
+npm run dev:server       # Backend only
+npm run check-types      # TypeScript check
+npm run db:push          # Push schema to DB
+npm run lint             # Lint (after ESLint setup)
 ```
 
 ## Environment Variables
 
 ```env
-# apps/api/.env
+# apps/server/.env
 DATABASE_URL="mongodb+srv://..."
 JWT_SECRET="your-secret"
-API_PORT=4000
+PORT=3000
 
-# apps/web/.env.local
-NEXT_PUBLIC_API_URL=http://localhost:4000
+# apps/web/.env
+NEXT_PUBLIC_API_URL=http://localhost:3000
 ```
 
 ---

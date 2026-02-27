@@ -2,13 +2,14 @@
 
 ## Setup Phase
 
-- [🔄] Initialize better-t-stack project (IN PROGRESS)
-- [ ] Configure ESLint flat config
-- [ ] Setup Prisma schema
+- [✅] Initialize better-t-stack project (COMPLETED)
+- [✅] Setup ESLint flat config + lint-staged (COMPLETED)
+- [✅] Setup Prisma schema (COMPLETED)
+- [🔄] Create backend folder structure (IN PROGRESS)
 - [ ] Run initial migrations
-- [ ] Verify Husky git hooks
+- [ ] Verify Husky git hooks work
 
-## Backend (Express + Prisma)
+## Backend (apps/server)
 
 - [ ] Auth middleware (JWT)
 - [ ] Auth routes (login/register)
@@ -18,8 +19,9 @@
 - [ ] Error handling middleware
 - [ ] Seed script for sample data
 
-## Frontend - Shared Components
+## Frontend (apps/web)
 
+### Shared Components
 - [ ] Button component
 - [ ] Input component
 - [ ] Card component
@@ -27,8 +29,7 @@
 - [ ] Modal component
 - [ ] Loading states
 
-## Frontend - Pages
-
+### Pages
 - [ ] Job Listings page (`/`)
   - [ ] Job list component
   - [ ] Search functionality
@@ -58,13 +59,9 @@
 - [ ] Verify form validations
 - [ ] Check accessibility
 - [ ] Performance check
-- [ ] Create README.md
 
 ## Git Commits
 
-## _(Track completed commits here)_
+---
 
--
-- ***
-
-  **Last updated**: 2026-02-28
+**Last updated**: 2026-02-28
