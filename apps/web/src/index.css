@@ -2,6 +2,15 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* Clash Display Font */
+@font-face {
+  font-family: "Clash Display";
+  src: url("https://cdn.fontshare.com/wf/ZV04XLUMRQAMGTBIXZNHEU7PBGJZEP5X/NSKUMJXUJRPJDEA6VQRCALFRGUR5JBNJ/3LXVXBWKGIWJKNBKTHXBT7VCTEPWH4OA.woff2")
+    format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -37,6 +46,10 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* QuickHire Brand Colors */
+  --brand-primary: #4640DE;
+  --hero-bg: #F8F8FD;
 }
 
 .dark {
@@ -74,8 +87,12 @@
 }
 
 @theme inline {
-  --font-sans: "Inter Variable", sans-serif;
+  --font-sans: "Clash Display", sans-serif;
+  --font-red-hat: "Red Hat Display", sans-serif;
+  --font-epilogue: "Epilogue", sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-brand-primary: var(--brand-primary);
+  --color-hero-bg: var(--hero-bg);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-accent: var(--sidebar-accent);
@@ -125,4 +142,13 @@
   html {
     @apply font-sans;
   }
+}
+
+/* Section Title - H2 styling from Figma */
+.section-title {
+  font-family: "Clash Display", sans-serif;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 110%;
+  letter-spacing: 0%;
 }
