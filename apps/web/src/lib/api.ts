@@ -1,0 +1,27 @@
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
+
+export async function getJobs() {
+  const res = await fetch(`${API_URL}/api/jobs`, { cache: "no-store" });
+  if (!res.ok) throw new Error("Failed to fetch jobs");
+  return res.json();
+}
+
+export async function getJobById(id: string) {
+  const res = await fetch(`${API_URL}/api/jobs/${id}`, { cache: "no-store" });
+  if (!res.ok) throw new Error("Failed to fetch job");
+  return res.json();
+}
+
+export async function getCategories() {
+  const res = await fetch(`${API_URL}/api/jobs`, { cache: "no-store" });
+  if (!res.ok) throw new Error("Failed to fetch jobs");
+  const data = await res.json();
+
+  // Extract unique categories with job counts
+  const categoryMap = new Map<string, number>();
+  data.data?.forEach((job: { category: string }) => {
+    categoryMap.set(job.category, (categoryMap.get(job.category) || 0) + 1);
+  });
+
+  return Array.from(categoryMap.entries()).map(([name, jobs]) => ({ name, jobs }));
+}

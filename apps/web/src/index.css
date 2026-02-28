@@ -88,6 +88,7 @@
 
 @theme inline {
   --font-sans: "Clash Display", sans-serif;
+  --font-clash-display: "Clash Display", sans-serif;
   --font-red-hat: "Red Hat Display", sans-serif;
   --font-epilogue: "Epilogue", sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
