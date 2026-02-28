@@ -3,7 +3,7 @@ import Image from "next/image";
 export function Hero() {
   return (
     <section className="bg-hero-bg w-full" style={{ height: "794px" }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28">
         <div className="flex items-center h-[716px]">
           {/* Left Content */}
           <div className="flex-1">

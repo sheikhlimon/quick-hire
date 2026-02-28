@@ -5,7 +5,11 @@
 ### Color Palette
 
 ```css
-/* Primary */
+/* Brand Colors (use these in Tailwind as bg-brand-primary, text-brand-primary) */
+--brand-primary: #4640DE;  /* Primary buttons, links */
+--hero-bg: #F8F8FD;        /* Hero section background */
+
+/* Default theme colors */
 --primary: #6366f1; /* Indigo/Purple */
 --primary-dark: #4f46e5;
 --primary-light: #818cf8;
@@ -54,8 +58,10 @@ font-bold      // 700
 "gap-4 md:gap-6"                     // Gap spacing
 "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
 
-// Container
-"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+// Container responsive padding
+"px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28"  // 16px → 24px → 32px → 64px → 112px
+
+// Responsive breakpoints: sm(640px) md(768px) lg(1024px) xl(1280px)
 ```
 
 ### Border Radius
@@ -203,9 +209,16 @@ className="w-full md:w-1/2 lg:w-1/3"
 className="text-gray-600"
 className="bg-indigo-500 text-white"
 
+// ✅ Use Tailwind utilities instead of inline styles
+className="px-6 py-3 leading-normal tracking-normal"
+
 // ❌ No arbitrary values
 className="w-[327px]"  // BAD
 className="w-80"       // GOOD
+
+// ❌ No inline styles for Tailwind properties
+style={{ padding: "12px 24px" }}  // BAD
+className="px-6 py-3"              // GOOD
 
 // ❌ No !important
 className="!text-black"  // BAD
