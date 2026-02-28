@@ -3,6 +3,7 @@ import cors from "cors";
 import express from "express";
 import jobRoutes from "./routes/jobs";
 import applicationRoutes from "./routes/applications";
+import { errorHandler, notFoundHandler } from "./middleware/error";
 
 const app = express();
 
@@ -21,6 +22,12 @@ app.get("/", (_req, res) => {
 
 app.use("/api/jobs", jobRoutes);
 app.use("/api/applications", applicationRoutes);
+
+// 404 handler for undefined routes
+app.use(notFoundHandler);
+
+// Global error handler (must be last)
+app.use(errorHandler);
 
 app.listen(3000, () => {
   console.log("Server is running on http://localhost:3000");
