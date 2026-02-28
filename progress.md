@@ -29,7 +29,7 @@
 - [ ] middleware/error.ts - Error handler
 
 ### Seed Data
-- [ ] scripts/seed.ts - Create sample jobs
+- [✅] scripts/seed.ts - Create sample jobs
 
 ## Frontend (apps/web) - ONE COMPONENT AT A TIME
 
