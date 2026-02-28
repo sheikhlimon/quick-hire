@@ -25,3 +25,12 @@ export async function getCategories() {
 
   return Array.from(categoryMap.entries()).map(([name, jobs]) => ({ name, jobs }));
 }
+
+export async function getFeaturedJobs() {
+  const res = await fetch(`${API_URL}/api/jobs`, { cache: "no-store" });
+  if (!res.ok) throw new Error("Failed to fetch jobs");
+  const data = await res.json();
+
+  // Return first 6 jobs as featured
+  return data.data?.slice(0, 6) || [];
+}
