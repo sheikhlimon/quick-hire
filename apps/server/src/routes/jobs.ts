@@ -1,4 +1,3 @@
-import type { Request, Response } from "express";
 import { Router } from "express";
 import {
   getAllJobs,
@@ -9,7 +8,6 @@ import {
 
 const router = Router();
 
-// Search in title OR company to match user intent
 router.get("/", getAllJobs);
 
 router.get("/:id", getJobById);

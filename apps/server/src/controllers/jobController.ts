@@ -5,7 +5,7 @@ export async function getAllJobs(req: Request, res: Response): Promise<void> {
   try {
     const { q, category, location } = req.query;
 
-    const where: any = {};
+    const where: Record<string, unknown> = {};
 
     // Search in title OR company to match user intent
     if (q && typeof q === "string") {
@@ -38,9 +38,15 @@ export async function getAllJobs(req: Request, res: Response): Promise<void> {
 export async function getJobById(req: Request, res: Response): Promise<void> {
   try {
     const { id } = req.params;
+    const jobId = Array.isArray(id) ? id[0] : id;
+
+    if (!jobId) {
+      res.status(400).json({ success: false, message: "Invalid job ID" });
+      return;
+    }
 
     const job = await prisma.job.findUnique({
-      where: { id },
+      where: { id: jobId },
     });
 
     if (!job) {
@@ -86,9 +92,15 @@ export async function createJob(req: Request, res: Response): Promise<void> {
 export async function deleteJob(req: Request, res: Response): Promise<void> {
   try {
     const { id } = req.params;
+    const jobId = Array.isArray(id) ? id[0] : id;
+
+    if (!jobId) {
+      res.status(400).json({ success: false, message: "Invalid job ID" });
+      return;
+    }
 
     const existingJob = await prisma.job.findUnique({
-      where: { id },
+      where: { id: jobId },
     });
 
     if (!existingJob) {
@@ -97,7 +109,7 @@ export async function deleteJob(req: Request, res: Response): Promise<void> {
     }
 
     await prisma.job.delete({
-      where: { id },
+      where: { id: jobId },
     });
 
     res.status(200).json({ success: true, message: "Job deleted successfully" });

@@ -48,3 +48,8 @@ coverage
 .cache
 tmp
 temp
+
+# Design references
+**/references/
+**/Pattern.png
+**/Title.png

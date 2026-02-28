@@ -10,34 +10,24 @@ export interface JwtPayload {
   role: string;
 }
 
-/**
- * Generate a JWT token for authenticated user
- */
 export function generateToken(payload: JwtPayload): string {
   return jwt.sign(payload, JWT_SECRET, {
     expiresIn: JWT_EXPIRES_IN,
   });
 }
 
-/**
- * Verify and decode a JWT token
- * Returns payload if valid, throws error if invalid
- */
 export function verifyToken(token: string): JwtPayload {
   try {
     return jwt.verify(token, JWT_SECRET) as JwtPayload;
-  } catch (error) {
+  } catch {
     throw new Error("Invalid or expired token");
   }
 }
 
-/**
- * Extract token from Authorization header
- * Format: "Bearer <token>"
- */
 export function extractToken(authHeader: string | undefined): string | null {
   if (!authHeader?.startsWith("Bearer ")) {
     return null;
   }
-  return authHeader.split(" ")[1];
+  const parts = authHeader.split(" ");
+  return parts[1] || null;
 }

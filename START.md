@@ -11,11 +11,11 @@ Before doing ANY work, you must read these files in order:
 
 ## Quick Project Recap
 
-**What:** Job board with 3 pages (Job Listings, Job Detail, Admin Dashboard)
+**What:** Simple job board with 3 pages (Job Listings, Job Detail, Admin)
 **Stack:** Next.js 16 + Express + MongoDB (Prisma) + Tailwind v4
 **Structure:** Turborepo monorepo
-**Auth:** JWT + httpOnly cookies
-**Design:** Must match Figma screenshot exactly
+**Design:** Must match Figma exactly
+**Time:** 6-8 hour task project
 
 ## Critical Rules
 
@@ -29,6 +29,15 @@ Before doing ANY work, you must read these files in order:
 
 Check `progress.md` for what's done and what's next.
 
+**Currently:** Backend - Job routes + controller (next file to create)
+
+## Design Reference
+
+Screenshots: `/home/limon/Pictures/screenshot-2026-02-28_*.png`
+- Job Listings (desktop + mobile)
+- Job Detail (desktop + mobile)
+- Admin page
+
 ---
 
-**Session started:** [Update when working]
+**Session started:** 2026-02-28

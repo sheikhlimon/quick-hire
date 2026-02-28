@@ -1,68 +1,65 @@
 # Implementation Plan - QuickHire Job Board
 
-## Actual Project Structure (from better-t-stack)
+## Task Overview
+
+Build a simple job board application based on Figma design. 6-8 hour task.
+
+**Design Reference:** Screenshots in `/home/limon/Pcreenshots/`
+- `screenshot-2026-02-28_02-52-07.png` - Job Listings (desktop)
+- `screenshot-2026-02-28_02-50-39.png` - Job Listings (mobile)
+- `screenshot-2026-02-28_02-52-26.png` - Job Detail (desktop)
+- `screenshot-2026-02-28_02-51-02.png` - Job Detail (mobile)
+
+## Project Structure
 
 ```
 quick-share/
 ├── apps/
-│   ├── server/          # Express backend (NOT 'api')
+│   ├── server/          # Express backend
 │   │   └── src/
-│   │       └── index.ts
-│   └── web/             # Next.js frontend
+│   │       ├── index.ts
+│   │       ├── routes/      # API endpoints
+│   │       ├── controllers/ # Business logic
+│   │       ├── middleware/  # Validation
+│   │       └── utils/       # Helpers (prisma, jwt)
+│   └── web/             # Next.js 16 frontend
 │       └── src/
 │           └── app/     # App Router pages
 ├── packages/
 │   ├── db/              # Prisma schema
-│   │   └── prisma/
-│   │       └── schema/
-│   │           └── schema.prisma
 │   ├── env/             # Environment variables
 │   └── config/          # Shared configs
-├── eslint.config.js     # ESLint flat config (need to create)
-├── turbo.json
-└── package.json
+└── turbo.json
 ```
 
-**Key difference**: Backend is `apps/server` NOT `apps/api`
+## Requirements
 
-## Pages Required (Per Task)
+### Frontend (Next.js)
 
-1. **Job Listings Page** (`apps/web/src/app/page.tsx`)
-   - Display all jobs
-   - Search functionality
-   - Filter by category/location
-   - Responsive layout
+| Page | Path | Description |
+|------|------|-------------|
+| Job Listings | `/` | Search, filter by category/location, job cards grid |
+| Job Detail | `/jobs/[id]` | Full description + Apply form |
+| Admin | `/admin` | Add/delete jobs (simple) |
 
-2. **Job Detail Page** (`apps/web/src/app/jobs/[id]/page.tsx`)
-   - Full job description
-   - Apply form (name, email, resume link, cover note)
+**UI Must Match Screenshots:**
+- Layout structure (see /home/limon/Pictures/screenshot-*.png)
+- Typography
+- Color scheme
+- Spacing and alignment
+- Mobile-first responsive
 
-3. **Admin Dashboard** (`apps/web/src/app/admin/dashboard/page.tsx`)
-   - Add/delete job listings
-   - Match Figma design exactly
+### Backend (Express)
 
-## Backend Structure (apps/server/src/)
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/jobs` | GET | List all jobs (w/ search: `?q=`, `?category=`, `?location=`) |
+| `/api/jobs/:id` | GET | Get single job details |
+| `/api/jobs` | POST | Create job (admin) |
+| `/api/jobs/:id` | DELETE | Delete job (admin) |
+| `/api/applications` | POST | Submit application |
 
-```
-index.ts          # Express entry
-routes/
-  jobs.ts         # Job routes
-  applications.ts # Application routes
-  auth.ts         # Auth routes
-controllers/
-  jobController.ts
-  authController.ts
-middleware/
-  auth.ts         # JWT verification
-  validation.ts   # Zod validation
-services/
-  jobService.ts
-utils/
-  prisma.ts       # Prisma client singleton
-  jwt.ts          # JWT utilities
-```
-
-## Database Schema (packages/db/prisma/schema/schema.prisma)
+### Database (MongoDB + Prisma)
 
 ```prisma
 model Job {
@@ -71,7 +68,7 @@ model Job {
   company     String
   location    String
   category    String
-  type        String
+  type        String   // Full-time, Part-time, Contract, Remote
   description String
   salary      String?
   createdAt   DateTime @default(now())
@@ -100,42 +97,81 @@ model User {
 }
 ```
 
-## API Endpoints
+### Validation (Zod)
 
-```
-GET    /api/jobs              - List all jobs (w/ search/filter)
-GET    /api/jobs/:id          - Get single job
-POST   /api/jobs              - Create job (admin)
-DELETE /api/jobs/:id          - Delete job (admin)
-POST   /api/applications      - Submit application
-POST   /api/auth/login        - Admin login
-```
+- Required fields must be validated
+- Email must be properly formatted
+- Resume link must be valid URL
 
-## Implementation Order
+## Implementation Order (Backend First)
 
+### Phase 1: Backend API
 1. ✅ Setup project (better-t-stack)
-2. 🔄 Setup ESLint flat config + lint-staged
-3. Setup Prisma schema + migrations
-4. Backend: Auth (JWT)
-5. Backend: Job CRUD endpoints
-6. Backend: Application submission
-7. Frontend: Shared UI components
-8. Frontend: Job listings page
-9. Frontend: Job detail + apply form
-10. Frontend: Admin login
-11. Frontend: Admin dashboard (match Figma)
+2. ✅ ESLint flat config
+3. ✅ Prisma schema
+4. ✅ JWT utility (for admin)
+5. [ ] Job routes + controller
+6. [ ] Application routes + controller
+7. [ ] Validation middleware (Zod)
+8. [ ] Seed data script
 
-## NPM Scripts Available
+### Phase 2: Frontend UI (One Component at a Time, Use frontend-design Skill)
+
+#### Shared Components
+9. [ ] Button component (primary, secondary, outline variants)
+10. [ ] Input component (text, email, url types)
+11. [ ] Textarea component
+12. [ ] Badge component (Full-time, Part-time, Contract, Remote)
+13. [ ] Card component (base card with shadow)
+
+#### Job Listings Page (`/`)
+14. [ ] Navbar component (QuickHire logo, conditional right side: Login+SignUp OR Post a Job)
+15. [ ] Hero component ("Find Your Dream Job" heading + search bar)
+16. [ ] FilterSection component (Category dropdown + Location dropdown + Search button)
+17. [ ] JobCard component (company icon circle, title, company name, location, type badge, Apply button)
+18. [ ] JobListings page (combine all above)
+
+#### Job Detail Page (`/jobs/[id]`)
+19. [ ] JobInfo component (title, company, location, type badge, description)
+20. [ ] ApplyForm component (name input, email input, resume link input, cover note textarea, submit button)
+21. [ ] JobDetail page (combine components)
+
+#### Admin Page (`/admin`)
+22. [ ] AddJobForm component (title, company, location, category, type, description, salary inputs)
+23. [ ] AdminJobCard component (same as JobCard but with Delete button)
+24. [ ] Admin page (combine components)
+13. [ ] Responsive polish
+
+### Phase 3: Polish & Deploy
+14. [ ] Test all flows
+15. [ ] README.md
+16. [ ] Deploy (optional)
+
+## NPM Scripts
 
 ```bash
-npm run dev              # Start all apps (web on :3001, server on :3000)
+npm run dev              # Start web + server
 npm run dev:web          # Frontend only
 npm run dev:server       # Backend only
 npm run check-types      # TypeScript check
 npm run db:push          # Push schema to DB
-npm run db:studio        # Prisma Studio
+npm run lint             # Lint check
+```
+
+## Environment Variables
+
+```env
+# apps/server/.env
+DATABASE_URL="mongodb+srv://..."
+JWT_SECRET="your-secret"
+PORT=3000
+CORS_ORIGIN="http://localhost:3001"
+
+# apps/web/.env
+NEXT_PUBLIC_API_URL="http://localhost:3000"
 ```
 
 ---
 
-**Commit strategy**: One commit per completed feature.
+**Commit strategy:** One commit per completed feature.
+**Remember:** Match Figma exactly, mobile-first, clean code.

@@ -25,11 +25,13 @@
   "dependencies": {
     "@quick-share/env": "*",
     "dotenv": "^17.2.2",
+    "jsonwebtoken": "^9.0.3",
     "zod": "^4.1.13"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@quick-share/config": "*",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^22.13.14",
     "eslint": "^10.0.2",
     "husky": "^9.1.7",
@@ -39,7 +41,9 @@
     "typescript-eslint": "^8.56.1"
   },
   "lint-staged": {
-    "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}": ["eslint --fix"]
+    "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}": [
+      "eslint --fix"
+    ]
   },
   "packageManager": "npm@10.9.4"
 }
