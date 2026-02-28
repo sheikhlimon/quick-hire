@@ -21,8 +21,8 @@
 ### Routes & Controllers
 - [✅] routes/jobs.ts - Job endpoints
 - [✅] controllers/jobController.ts - Job business logic
-- [ ] routes/applications.ts - Application endpoints
-- [ ] controllers/applicationController.ts - Application logic
+- [✅] routes/applications.ts - Application endpoints
+- [✅] controllers/applicationController.ts - Application logic
 
 ### Middleware
 - [ ] middleware/validation.ts - Zod validation schemas
