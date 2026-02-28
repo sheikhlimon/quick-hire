@@ -25,7 +25,7 @@
 - [✅] controllers/applicationController.ts - Application logic
 
 ### Middleware
-- [ ] middleware/validation.ts - Zod validation schemas
+- [✅] middleware/validation.ts - Zod validation schemas
 - [ ] middleware/error.ts - Error handler
 
 ### Seed Data

@@ -65,11 +65,6 @@ export async function createJob(req: Request, res: Response): Promise<void> {
   try {
     const { title, company, location, category, type, description, salary } = req.body;
 
-    if (!title || !company || !location || !category || !type || !description) {
-      res.status(400).json({ success: false, message: "Missing required fields" });
-      return;
-    }
-
     const job = await prisma.job.create({
       data: {
         title,

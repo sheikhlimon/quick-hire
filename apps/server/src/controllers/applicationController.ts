@@ -5,22 +5,6 @@ export async function submitApplication(req: Request, res: Response): Promise<vo
   try {
     const { jobId, name, email, resumeLink, coverNote } = req.body;
 
-    // Basic validation
-    if (!jobId || !name || !email || !resumeLink) {
-      res.status(400).json({ success: false, message: "Missing required fields" });
-      return;
-    }
-
-    // Verify job exists before creating application
-    const job = await prisma.job.findUnique({
-      where: { id: jobId },
-    });
-
-    if (!job) {
-      res.status(404).json({ success: false, message: "Job not found" });
-      return;
-    }
-
     const application = await prisma.application.create({
       data: {
         jobId,
