@@ -1,5 +1,17 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 
+export interface Job {
+  id: string;
+  title: string;
+  company: string;
+  location: string;
+  category: string;
+  type: string;
+  description: string;
+  salary?: string;
+  logo?: string;
+}
+
 export async function getJobs() {
   const res = await fetch(`${API_URL}/api/jobs`, { cache: "no-store" });
   if (!res.ok) throw new Error("Failed to fetch jobs");
@@ -31,6 +43,15 @@ export async function getFeaturedJobs() {
   if (!res.ok) throw new Error("Failed to fetch jobs");
   const data = await res.json();
 
-  // Return first 6 jobs as featured
-  return data.data?.slice(0, 6) || [];
+  // Return first 8 jobs as featured
+  return data.data?.slice(0, 8) || [];
+}
+
+export async function getLatestJobs() {
+  const res = await fetch(`${API_URL}/api/jobs`, { cache: "no-store" });
+  if (!res.ok) throw new Error("Failed to fetch jobs");
+  const data = await res.json();
+
+  // Return next 8 jobs as latest
+  return data.data?.slice(8, 16) || [];
 }

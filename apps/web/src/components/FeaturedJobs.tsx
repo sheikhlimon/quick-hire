@@ -1,15 +1,6 @@
 import Image from "next/image";
 import { MapPinIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-
-interface Job {
-  id: string;
-  title: string;
-  company: string;
-  location: string;
-  type: string;
-  salary: string;
-  logo?: string;
-}
+import type { Job } from "@/lib/api";
 
 interface FeaturedJobsProps {
   jobs?: Job[];
@@ -43,21 +34,21 @@ export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
             >
               {/* Company Logo */}
               <div className="mb-3">
-                <div className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center">
-                  {job.logo ? (
-                    <Image
-                      src={job.logo}
-                      alt={job.company}
-                      width={40}
-                      height={40}
-                      className="rounded-full"
-                    />
-                  ) : (
+                {job.logo ? (
+                  <Image
+                    src={job.logo}
+                    alt={job.company}
+                    width={40}
+                    height={40}
+                    className="rounded-full"
+                  />
+                ) : (
+                  <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
                     <span className="text-brand-primary font-semibold text-base">
                       {job.company.charAt(0)}
                     </span>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
 
               {/* Job Title */}
