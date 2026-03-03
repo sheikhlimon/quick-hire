@@ -1,5 +1,5 @@
 {
-  "name": "quick-share",
+  "name": "quick-hire",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -16,22 +16,22 @@
     "dev:native": "turbo -F native dev",
     "dev:web": "turbo -F web dev",
     "dev:server": "turbo -F server dev",
-    "db:push": "turbo -F @quick-share/db db:push",
-    "db:studio": "turbo -F @quick-share/db db:studio",
-    "db:generate": "turbo -F @quick-share/db db:generate",
-    "db:migrate": "turbo -F @quick-share/db db:migrate",
+    "db:push": "turbo -F @quick-hire/db db:push",
+    "db:studio": "turbo -F @quick-hire/db db:studio",
+    "db:generate": "turbo -F @quick-hire/db db:generate",
+    "db:migrate": "turbo -F @quick-hire/db db:migrate",
     "seed": "turbo -F server seed",
     "prepare": "husky"
   },
   "dependencies": {
-    "@quick-share/env": "*",
+    "@quick-hire/env": "*",
     "dotenv": "^17.2.2",
     "jsonwebtoken": "^9.0.3",
     "zod": "^4.1.13"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@quick-share/config": "*",
+    "@quick-hire/config": "*",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^22.13.14",
     "eslint": "^10.0.2",

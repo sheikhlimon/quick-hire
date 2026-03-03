@@ -1,5 +1,5 @@
 {
-  "name": "@quick-share/db",
+  "name": "@quick-hire/db",
   "type": "module",
   "exports": {
     ".": {
@@ -17,12 +17,12 @@
   },
   "dependencies": {
     "@prisma/client": "6.19.0",
-    "@quick-share/env": "*",
+    "@quick-hire/env": "*",
     "dotenv": "^17.2.2",
     "zod": "^4.1.13"
   },
   "devDependencies": {
-    "@quick-share/config": "*",
+    "@quick-hire/config": "*",
     "prisma": "6.19.0",
     "typescript": "^5"
   }

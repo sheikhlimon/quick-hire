@@ -13,7 +13,7 @@ Build a simple job board application based on Figma design. 6-8 hour task.
 ## Project Structure
 
 ```
-quick-share/
+quick-hire/
 ├── apps/
 │   ├── server/          # Express backend
 │   │   └── src/

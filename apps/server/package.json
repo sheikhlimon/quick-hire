@@ -12,15 +12,15 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@quick-share/db": "*",
-    "@quick-share/env": "*",
+    "@quick-hire/db": "*",
+    "@quick-hire/env": "*",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "zod": "^4.1.13"
   },
   "devDependencies": {
-    "@quick-share/config": "*",
+    "@quick-hire/config": "*",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/node": "^22.13.14",

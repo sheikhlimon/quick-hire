@@ -1,4 +1,4 @@
-import "@quick-share/env/web";
+import "@quick-hire/env/web";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {

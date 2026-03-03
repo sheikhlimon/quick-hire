@@ -65,7 +65,7 @@ Monorepo:  Turborepo
 ## Project Structure
 
 ```
-quick-share/
+quick-hire/
 ├── apps/
 │   ├── server/          # Express backend
 │   └── web/             # Next.js frontend

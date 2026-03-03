@@ -11,9 +11,9 @@ export function Footer() {
     <footer className="bg-slate-900 w-full">
       <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 py-16">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
-          {/* Left Column - Logo & Description */}
-          <div>
+        <div className="grid grid-cols-1 grid-rows-[auto_auto_auto] md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
+          {/* Logo & Description - Full width on mobile, first column on desktop */}
+          <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center">
                 <span className="text-white font-bold text-xl">Q</span>
@@ -26,8 +26,8 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Middle Column - Navigation Links */}
-          <div className="flex gap-12">
+          {/* Navigation Links - 2 columns on mobile, stays in middle on desktop */}
+          <div className="col-span-1 grid grid-cols-2 gap-8 md:gap-12">
             {/* About Column */}
             <div>
               <h3 className="text-white font-medium text-base mb-4">About</h3>
@@ -83,21 +83,21 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Right Column - Newsletter Subscription */}
-          <div>
+          {/* Newsletter Subscription - Full width on mobile, last column on desktop */}
+          <div className="col-span-1">
             <h3 className="text-white font-medium text-base mb-4">
               Get job notifications
             </h3>
             <p className="text-gray-400 text-sm mb-4">
               Subscribe to get notified about new job openings.
             </p>
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-2">
               <input
                 type="email"
                 placeholder="Your email address"
                 className="flex-1 px-4 py-3 rounded bg-white border-0 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary"
               />
-              <button className="bg-brand-primary text-white px-6 py-3 rounded font-medium text-sm hover:opacity-90 transition-opacity">
+              <button className="bg-brand-primary text-white px-6 py-3 rounded font-medium text-sm hover:opacity-90 transition-opacity whitespace-nowrap">
                 Subscribe
               </button>
             </div>

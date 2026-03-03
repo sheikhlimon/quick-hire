@@ -1,4 +1,4 @@
-import { env } from "@quick-share/env/server";
+import { env } from "@quick-hire/env/server";
 import cors from "cors";
 import express from "express";
 import jobRoutes from "./routes/jobs";

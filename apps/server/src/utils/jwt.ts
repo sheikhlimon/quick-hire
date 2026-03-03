@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { env } from "@quick-share/env/server";
+import { env } from "@quick-hire/env/server";
 
 const JWT_SECRET = env.JWT_SECRET;
 const JWT_EXPIRES_IN = "7d";

@@ -36,16 +36,16 @@ export function LatestJobs({ jobs = [] }: LatestJobsProps) {
           </a>
         </div>
 
-        {/* Job Cards Grid - 2 columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        {/* Job Cards Grid - Mobile: 1 column with small gap, Desktop: 2 columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12">
           {jobs.map((job) => {
             const categoryStyles = getCategoryStyles(job.category);
             return (
               <div
                 key={job.id}
-                className="bg-white rounded-lg p-4 hover:shadow-sm transition-shadow"
+                className="bg-white border border-gray-200 p-4 hover:shadow-sm transition-shadow"
               >
-                <div className="flex gap-4">
+                <div className="flex gap-3 md:gap-4">
                   {/* Company Logo */}
                   <div className="flex-shrink-0">
                     {job.logo ? (
@@ -54,11 +54,11 @@ export function LatestJobs({ jobs = [] }: LatestJobsProps) {
                         alt={job.company}
                         width={48}
                         height={48}
-                        className="rounded-full"
+                        className="rounded-full w-8 h-8 md:w-12 md:h-12"
                       />
                     ) : (
-                      <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
-                        <span className="text-brand-primary font-semibold text-base">
+                      <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-gray-100 flex items-center justify-center">
+                        <span className="text-brand-primary font-semibold text-sm md:text-base">
                           {job.company.charAt(0)}
                         </span>
                       </div>
@@ -68,12 +68,12 @@ export function LatestJobs({ jobs = [] }: LatestJobsProps) {
                   {/* Job Details */}
                   <div className="flex-1">
                     {/* Job Title */}
-                    <h3 className="font-semibold text-base text-text-primary mb-1">
+                    <h3 className="font-semibold text-base md:text-base text-text-primary mb-1">
                       {job.title}
                     </h3>
 
                     {/* Company and Location */}
-                    <div className="flex items-center gap-2 text-text-secondary mb-3">
+                    <div className="flex items-center gap-2 text-text-secondary mb-2 md:mb-3">
                       <span className="text-sm">{job.company}</span>
                       <span className="text-gray-300">•</span>
                       <div className="flex items-center gap-1">

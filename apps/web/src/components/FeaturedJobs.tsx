@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { MapPinIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import type { Job } from "@/lib/api";
+import { Card } from "./ui/Card";
 
 interface FeaturedJobsProps {
   jobs?: Job[];
@@ -26,12 +27,9 @@ export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
         </div>
 
         {/* Job Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12">
           {jobs.map((job) => (
-            <div
-              key={job.id}
-              className="bg-white rounded-lg p-5 border border-gray-200 hover:shadow-sm transition-shadow min-h-[220px]"
-            >
+            <Card key={job.id} className="p-4 md:p-5 min-h-[200px] md:min-h-[220px]">
               {/* Company Logo */}
               <div className="mb-3">
                 {job.logo ? (
@@ -40,7 +38,7 @@ export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
                     alt={job.company}
                     width={40}
                     height={40}
-                    className="rounded-full"
+                    className="rounded-full w-10 h-10"
                   />
                 ) : (
                   <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
@@ -80,7 +78,7 @@ export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
                   Apply Now
                 </button>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

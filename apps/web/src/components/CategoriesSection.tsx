@@ -49,34 +49,37 @@ export function CategoriesSection({ categories = [] }: CategoriesSectionProps) {
         </div>
 
         {/* Mobile: horizontal list cards, Desktop: vertical grid cards */}
-        <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
+        <div className="flex flex-col md:grid md:grid-cols-3 gap-3 md:gap-8">
           {categories.map((category) => {
             const Icon = categoryIcons[category.name] || ChevronRightIcon;
             return (
               <div
                 key={category.name}
-                className="border border-gray-200 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all cursor-pointer group p-4 md:p-8 flex items-center md:flex-col md:justify-between w-full h-auto md:w-72 md:h-52"
+                className="group/card relative border border-gray-200 hover:bg-brand-primary hover:border-brand-primary transition-all duration-300 cursor-pointer"
               >
-                <Icon className="w-6 h-6 md:w-10 md:h-10 group-hover:text-white shrink-0 md:shrink-auto" style={{ color: "#6C5CE7" }} />
-
-                <div className="flex-1 md:flex-none flex items-center justify-between ml-3 md:ml-0 gap-2">
-                  <div className="md:block">
-                    <h3 className="font-semibold text-base md:text-lg mb-0 md:mb-2 group-hover:text-white text-text-primary">
+                {/* Mobile: Horizontal card */}
+                <div className="md:hidden flex items-center p-4 h-[70px]">
+                  <Icon className="w-6 h-6 shrink-0 text-[#6C5CE7] group-hover/card:text-white transition-colors" />
+                  <div className="flex-1 flex items-center justify-between ml-3">
+                    <h3 className="font-semibold text-base text-text-primary group-hover/card:text-white transition-colors">
                       {category.name}
                     </h3>
-
-                    <p className="hidden md:block font-epilogue font-normal text-base leading-[160%] group-hover:text-white text-text-secondary">
-                      {category.jobs} jobs available
-                    </p>
+                    <span className="text-sm text-text-secondary group-hover/card:text-white transition-colors">{category.jobs} jobs</span>
                   </div>
+                </div>
 
-                  {/* Mobile: Show job count inline, Desktop: Hide */}
-                  <span className="md:hidden text-sm text-text-secondary">
-                    {category.jobs} jobs
-                  </span>
-
-                  {/* Desktop: Show arrow in bottom right */}
-                  <ChevronRightIcon className="hidden md:block w-4 h-4 group-hover:text-white text-text-secondary" />
+                {/* Desktop: Vertical card */}
+                <div className="hidden md:flex flex-col p-8 w-[274px] h-[214px]">
+                  <Icon className="w-10 h-10 text-[#6C5CE7] group-hover/card:text-white transition-colors" />
+                  <div className="mt-6 flex-1 flex flex-col justify-end">
+                    <h3 className="font-semibold text-lg mb-1 text-text-primary group-hover/card:text-white transition-colors">
+                      {category.name}
+                    </h3>
+                    <div className="font-epilogue font-normal text-base leading-[160%] text-text-secondary group-hover/card:text-white flex items-center gap-2 transition-colors">
+                      {category.jobs} jobs available
+                      <ChevronRightIcon className="w-5 h-5 text-brand-primary group-hover/card:text-white transition-colors" />
+                    </div>
+                  </div>
                 </div>
               </div>
             );

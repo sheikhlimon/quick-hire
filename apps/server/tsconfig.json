@@ -1,5 +1,5 @@
 {
-  "extends": "@quick-share/config/tsconfig.base.json",
+  "extends": "@quick-hire/config/tsconfig.base.json",
   "compilerOptions": {
     "composite": true,
     "outDir": "dist",
