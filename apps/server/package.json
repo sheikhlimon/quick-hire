@@ -3,7 +3,7 @@
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
-    "build": "npx tsdown",
+    "build": "node ../../node_modules/tsdown/dist/cli.mjs",
     "check-types": "tsc -b",
     "compile": "bun build --compile --minify --sourcemap --bytecode ./src/index.ts --outfile server",
     "dev": "tsx watch src/index.ts",
