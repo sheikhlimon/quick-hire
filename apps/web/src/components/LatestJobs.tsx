@@ -30,7 +30,7 @@ const getJobTypeStyles = (type: string): { bg: string; text: string } => {
 
 export function LatestJobs({ jobs = [] }: LatestJobsProps) {
   return (
-    <section className="pt-20 pb-16 bg-gray-50">
+    <section className="py-16 bg-gray-50">
       <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
@@ -48,7 +48,7 @@ export function LatestJobs({ jobs = [] }: LatestJobsProps) {
         </div>
 
         {/* Job Cards Grid - Mobile: 1 column, Desktop: 2 columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
           {jobs.map((job) => {
             const categoryStyles = getCategoryStyles(job.category);
             const jobTypeStyles = getJobTypeStyles(job.type);
