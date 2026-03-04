@@ -21,7 +21,7 @@ const getCategoryStyles = (category: string): { bg: string; text: string } => {
 export function LatestJobs({ jobs = [] }: LatestJobsProps) {
   return (
     <section className="pt-[72px] pb-16 bg-gray-50 min-h-[745px]">
-      <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-[124px]">
+      <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <h2 className="font-clash-display font-semibold text-[48px] leading-[110%] tracking-normal">

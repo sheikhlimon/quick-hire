@@ -11,7 +11,7 @@ interface FeaturedJobsProps {
 export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
   return (
     <section className="py-16 pb-[72px] bg-white">
-      <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-[124px]">
+      <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <h2 className="font-clash-display font-semibold text-[48px] leading-[110%] tracking-normal">
