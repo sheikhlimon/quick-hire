@@ -16,11 +16,11 @@
     "dev:native": "turbo -F native dev",
     "dev:web": "turbo -F web dev",
     "dev:server": "turbo -F server dev",
-    "db:push": "turbo -F @quick-hire/db db:push",
-    "db:studio": "turbo -F @quick-hire/db db:studio",
-    "db:generate": "turbo -F @quick-hire/db db:generate",
-    "db:migrate": "turbo -F @quick-hire/db db:migrate",
-    "seed": "turbo -F server seed",
+    "db:push": "npx turbo -F @quick-hire/db db:push",
+    "db:studio": "npx turbo -F @quick-hire/db db:studio",
+    "db:generate": "npx turbo -F @quick-hire/db db:generate",
+    "db:migrate": "npx turbo -F @quick-hire/db db:migrate",
+    "seed": "npx turbo -F server seed",
     "prepare": "[ -d .git ] && husky || true"
   },
   "dependencies": {
@@ -28,6 +28,7 @@
     "dotenv": "^17.2.2",
     "jsonwebtoken": "^9.0.3",
     "react-hot-toast": "^2.6.0",
+    "turbo": "^2.6.3",
     "zod": "^4.1.13"
   },
   "devDependencies": {
@@ -38,7 +39,6 @@
     "eslint": "^10.0.2",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
-    "turbo": "^2.6.3",
     "typescript": "^5",
     "typescript-eslint": "^8.56.1"
   },
