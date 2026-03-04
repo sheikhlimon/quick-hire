@@ -63,16 +63,24 @@ export default function JobDetailPage() {
         }),
       });
 
+      const data = await res.json();
+
       if (res.ok) {
         alert("Application submitted successfully!");
         setFormData({ name: "", email: "", resumeLink: "", coverNote: "" });
         setShowForm(false);
       } else {
-        alert("Failed to submit application");
+        // Show detailed error message
+        if (data.errors && data.errors.length > 0) {
+          const errorMessages = data.errors.map((e: any) => e.message).join("\n");
+          alert(`Validation errors:\n${errorMessages}`);
+        } else {
+          alert(data.message || "Failed to submit application");
+        }
       }
     } catch (error) {
       console.error("Failed to submit:", error);
-      alert("Failed to submit application");
+      alert("Failed to submit application. Please try again.");
     } finally {
       setSubmitting(false);
     }
@@ -212,7 +220,7 @@ export default function JobDetailPage() {
                 <input
                   type="url"
                   required
-                  placeholder="https://..."
+                  placeholder="https://drive.google.com/..."
                   value={formData.resumeLink}
                   onChange={(e) => setFormData({ ...formData, resumeLink: e.target.value })}
                   className="w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none"
