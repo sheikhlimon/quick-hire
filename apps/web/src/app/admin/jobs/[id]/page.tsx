@@ -164,7 +164,7 @@ export default function JobDetailPage() {
             </div>
 
             <div>
-              <h2 className="font-semibold text-gray-900 mb-2">Job Description</h2>
+              <h2 className="font-clash-display font-semibold text-gray-900 mb-2">Job Description</h2>
               <p className="text-gray-600 whitespace-pre-wrap">{job.description}</p>
             </div>
           </div>
@@ -172,7 +172,7 @@ export default function JobDetailPage() {
           {/* Applications Section */}
           <div className="bg-white border border-gray-200">
             <div className="p-4 border-b border-gray-200 flex items-center justify-between">
-              <h2 className="font-semibold text-gray-900">
+              <h2 className="font-clash-display font-semibold text-gray-900">
                 Applications ({applications.length})
               </h2>
               <button
