@@ -37,38 +37,36 @@ export function Hero() {
           {/* Search Bar */}
           <div className="bg-white border border-gray-200 shadow-sm px-3 py-2.5 mb-4 md:mb-6 w-full">
             <div className="flex items-center gap-2 md:gap-3 overflow-hidden">
-              {/* Search icon */}
-              <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-
-              {/* Job title input */}
-              <input
-                type="text"
-                placeholder="Job title or keyword"
-                className="font-epilogue font-normal text-sm text-gray-700 flex-1 min-w-0 outline-none placeholder:text-gray-400"
-              />
+              {/* Search icon + Job title input */}
+              <div className="flex items-center gap-2 flex-1 min-w-0 relative">
+                <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input
+                  type="text"
+                  placeholder="Job title or keyword"
+                  className="font-epilogue font-normal text-sm text-gray-700 flex-1 min-w-0 outline-none placeholder:text-gray-400 pb-1 border-b border-gray-300"
+                />
+              </div>
 
               {/* Divider */}
               <div className="hidden md:block w-px h-5 bg-gray-200 flex-shrink-0" />
 
-              {/* Location icon */}
-              <svg className="hidden md:block w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-
-              {/* Location input */}
-              <input
-                type="text"
-                placeholder="Florence, Italy"
-                className="hidden md:block font-epilogue font-normal text-sm text-gray-700 flex-1 min-w-0 outline-none placeholder:text-gray-400"
-              />
-
-              {/* Dropdown arrow */}
-              <svg className="hidden md:block w-3 h-3 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
+              {/* Location icon + Location input */}
+              <div className="hidden md:flex items-center gap-2 flex-1 min-w-0 relative">
+                <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <input
+                  type="text"
+                  placeholder="Florence, Italy"
+                  className="font-epilogue font-normal text-sm text-gray-700 flex-1 min-w-0 outline-none placeholder:text-gray-400 pb-1 border-b border-gray-300"
+                />
+                <svg className="w-3 h-3 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
 
               {/* Search button */}
               <button className="font-epilogue bg-brand-primary text-white px-5 py-2 font-medium text-sm whitespace-nowrap flex-shrink-0">
