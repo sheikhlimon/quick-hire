@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import Image from "next/image";
+import { X } from "lucide-react";
 import { useState } from "react";
 
 export function Navbar() {
@@ -10,28 +11,50 @@ export function Navbar() {
   return (
     <nav className="bg-hero-bg">
       <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28">
-        <div className="flex justify-between items-center h-[78px]">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-brand-primary flex items-center justify-center">
-              <span className="text-white font-bold text-lg">Q</span>
-            </div>
-            <span className="font-red-hat font-bold text-2xl leading-[150%] tracking-[-0.01em] text-text-primary">
-              QuickHire
-            </span>
-          </Link>
+        <div className="flex justify-between items-center h-16 md:h-20">
+          {/* Logo + Navigation Links */}
+          <div className="flex items-center gap-6 md:gap-8">
+            <Link href="/" className="flex items-center gap-2">
+              <Image
+                src="/assets/logo.png"
+                alt="QuickHire"
+                width={32}
+                height={32}
+                className="h-8 w-8 md:h-9 md:w-9"
+              />
+              <span className="font-sans font-bold text-xl md:text-2xl leading-tight tracking-tight text-gray-900">
+                QuickHire
+              </span>
+            </Link>
 
-          {/* Desktop - Login and Signup buttons */}
-          <div className="hidden md:flex items-center gap-4">
+            {/* Desktop Navigation Links */}
+            <div className="hidden md:flex items-center gap-8">
+              <Link
+                href="/jobs"
+                className="text-base font-normal text-gray-500 hover:text-gray-900 transition-colors"
+              >
+                Find Jobs
+              </Link>
+              <Link
+                href="/companies"
+                className="text-base font-normal text-gray-500 hover:text-gray-900 transition-colors"
+              >
+                Browse Companies
+              </Link>
+            </div>
+          </div>
+
+          {/* Desktop - Auth Buttons */}
+          <div className="hidden md:flex items-center gap-6">
             <Link
               href="/login"
-              className="font-epilogue font-bold text-base leading-[160%] tracking-normal text-brand-primary"
+              className="text-base font-medium text-brand-primary px-8 py-3"
             >
               Login
             </Link>
             <Link
               href="/signup"
-              className="font-epilogue font-bold text-base leading-[160%] tracking-normal bg-brand-primary text-white px-6 py-3"
+              className="text-base font-medium bg-brand-primary text-white px-8 py-3"
             >
               Sign Up
             </Link>
@@ -40,13 +63,17 @@ export function Navbar() {
           {/* Mobile - Hamburger menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center"
+            className="md:hidden w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
-              <X className="w-5 h-5 text-text-primary" />
+              <X className="w-5 h-5 text-gray-900" />
             ) : (
-              <Menu className="w-5 h-5 text-text-primary" />
+              <div className="flex flex-col gap-[3px] w-4.5">
+                <span className="w-full h-[2px] bg-gray-900 rounded-sm"></span>
+                <span className="w-full h-[2px] bg-gray-900 rounded-sm"></span>
+                <span className="w-1/2 h-[2px] bg-gray-900 rounded-sm"></span>
+              </div>
             )}
           </button>
         </div>
@@ -57,16 +84,31 @@ export function Navbar() {
         <div className="md:hidden bg-white border-t border-gray-200">
           <div className="px-4 py-4 space-y-3">
             <Link
+              href="/jobs"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-base font-normal text-gray-500 hover:text-gray-900 transition-colors py-2"
+            >
+              Find Jobs
+            </Link>
+            <Link
+              href="/companies"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-base font-normal text-gray-500 hover:text-gray-900 transition-colors py-2"
+            >
+              Browse Companies
+            </Link>
+            <hr className="border-gray-200" />
+            <Link
               href="/login"
               onClick={() => setMobileMenuOpen(false)}
-              className="block font-epilogue font-bold text-base leading-[160%] tracking-normal text-brand-primary py-2"
+              className="block text-base font-medium text-brand-primary py-2"
             >
               Login
             </Link>
             <Link
               href="/signup"
               onClick={() => setMobileMenuOpen(false)}
-              className="block font-epilogue font-bold text-base leading-[160%] tracking-normal bg-brand-primary text-white px-6 py-3 rounded text-center"
+              className="block text-base font-medium bg-brand-primary text-white px-6 py-3 text-center"
             >
               Sign Up
             </Link>
