@@ -2,136 +2,109 @@ import Image from "next/image";
 
 export function Hero() {
   return (
-    <section className="bg-hero-bg w-full min-h-[600px] md:min-h-[794px]">
-      <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 py-12 md:py-0">
-        <div className="flex flex-col md:flex-row items-center md:h-[716px]">
-          {/* Left Content */}
-          <div className="flex-1 w-full text-center md:text-left">
-            {/* Headline */}
-            <div className="mb-6 md:mb-8">
-              <div className="flex flex-col md:flex-row md:items-baseline justify-center md:justify-start gap-1 md:gap-3">
-                <span className="font-semibold text-[28px] md:text-[42px] leading-[110%] tracking-normal text-text-primary">
-                  Discover
-                </span>
-                <span className="font-semibold text-[28px] md:text-[42px] leading-[110%] tracking-normal text-text-primary">
-                  more than
-                </span>
-                <div className="relative inline-block mt-1 md:mt-0">
-                  <span className="font-semibold text-[42px] md:text-[72px] leading-[110%] tracking-normal text-brand-primary">
-                    5000+ Jobs
-                  </span>
-                  <Image
-                    src="/assets/vector.svg"
-                    alt=""
-                    width={533}
-                    height={16}
-                    className="absolute -bottom-2 md:-bottom-4 left-0 w-full"
-                  />
-                </div>
-              </div>
-            </div>
+    <section className="bg-hero-bg w-full min-h-[650px] md:min-h-[750px] lg:min-h-screen relative overflow-hidden">
+      {/* Content */}
+      <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 min-h-[650px] md:min-h-[750px] lg:min-h-screen relative z-10">
+        <div className="flex flex-col justify-center h-full max-w-md lg:max-w-2xl py-12 lg:py-16">
+          {/* Discover */}
+          <h2 className="font-clash-display font-semibold text-5xl md:text-6xl lg:text-[72px] leading-[110%] tracking-normal text-gray-900 mb-0.5">
+            Discover
+          </h2>
 
-            {/* Subheadline */}
-            <p className="text-sm md:text-base text-text-secondary max-w-lg mx-auto md:mx-0 mb-6 md:mb-8 leading-relaxed">
-              Great platform for the job seeker that searching for new career
-              heights and passionate about startups.
-            </p>
+          {/* more than */}
+          <h2 className="font-clash-display font-semibold text-5xl md:text-6xl lg:text-[72px] leading-[110%] tracking-normal text-gray-900 mb-0.5">
+            more than
+          </h2>
 
-            {/* Search Bar */}
-            <div className="bg-white rounded-lg p-3 md:p-3 shadow-sm flex flex-col md:flex-row items-stretch md:items-center gap-3 md:gap-3 mb-6">
-              {/* Job Title Input */}
-              <div className="flex items-center gap-2 px-3 py-2 flex-1">
-                <svg
-                  className="w-5 h-5 text-gray-400 shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-                <input
-                  type="text"
-                  placeholder="Job title or keyword"
-                  className="flex-1 outline-none text-gray-600 text-sm md:text-base"
-                />
-              </div>
+          {/* 5000+ Jobs with underline */}
+          <div className="mb-6 w-fit">
+            <h2 className="font-clash-display font-semibold text-5xl md:text-6xl lg:text-[72px] leading-[110%] tracking-normal text-brand-accent">
+              5000+ Jobs
+            </h2>
+            <img
+              src="/assets/vector.svg"
+              alt=""
+              className="mt-2"
+            />
+          </div>
 
-              {/* Divider - hidden on mobile */}
-              <div className="hidden md:block w-px h-8 bg-gray-200" />
+          {/* Subtitle */}
+          <p className="font-epilogue font-normal text-base leading-[160%] tracking-normal text-gray-500 mb-6 md:mb-8 max-w-md">
+            Great platform for the job seeker that searching for new career
+            heights and passionate about startups.
+          </p>
 
-              {/* Location Input */}
-              <div className="flex items-center gap-2 px-3 py-2 flex-1">
-                <svg
-                  className="w-5 h-5 text-gray-400 shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
-                <input
-                  type="text"
-                  placeholder="Florence, Italy"
-                  className="flex-1 outline-none text-gray-600 text-sm md:text-base"
-                />
-                <svg
-                  className="w-4 h-4 text-gray-400 shrink-0 hidden md:block"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </div>
+          {/* Search Bar */}
+          <div className="bg-white border border-gray-200 shadow-sm px-3 py-2.5 mb-4 md:mb-6 w-full">
+            <div className="flex items-center gap-2 md:gap-3 overflow-hidden">
+              {/* Search icon */}
+              <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
 
-              {/* Search Button */}
-              <button className="bg-brand-primary text-white px-8 py-3 rounded font-semibold text-sm md:text-base hover:opacity-90 transition-opacity w-full md:w-auto">
+              {/* Job title input */}
+              <input
+                type="text"
+                placeholder="Job title or keyword"
+                className="font-epilogue font-normal text-sm text-gray-700 flex-1 min-w-0 outline-none placeholder:text-gray-400"
+              />
+
+              {/* Divider */}
+              <div className="hidden md:block w-px h-5 bg-gray-200 flex-shrink-0" />
+
+              {/* Location icon */}
+              <svg className="hidden md:block w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+
+              {/* Location input */}
+              <input
+                type="text"
+                placeholder="Florence, Italy"
+                className="hidden md:block font-epilogue font-normal text-sm text-gray-700 flex-1 min-w-0 outline-none placeholder:text-gray-400"
+              />
+
+              {/* Dropdown arrow */}
+              <svg className="hidden md:block w-3 h-3 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+
+              {/* Search button */}
+              <button className="font-epilogue bg-brand-primary text-white px-5 py-2 font-medium text-sm whitespace-nowrap flex-shrink-0">
                 Search my job
               </button>
             </div>
-
-            {/* Popular Categories */}
-            <div className="text-sm md:text-base text-text-secondary">
-              <span className="font-medium">Popular :</span>
-              <span className="ml-1">
-                UI Designer, UX Researcher, Android, Admin
-              </span>
-            </div>
           </div>
 
-          {/* Right Content - Background pattern only, hidden on mobile */}
-          <div className="hidden md:block flex-1 relative">
-            <div
-              className="absolute right-0 top-0 w-full h-full opacity-40"
-              style={{
-                backgroundImage: `url('/assets/hero-bg.png')`,
-                backgroundSize: "contain",
-                backgroundPosition: "right center",
-                backgroundRepeat: "no-repeat",
-              }}
-            />
+          {/* Popular */}
+          <div className="font-epilogue font-normal text-sm leading-[160%] tracking-normal text-gray-500">
+            <span className="font-semibold">Popular :</span>
+            <span> UI Designer, UX Researcher, Android, Admin</span>
           </div>
+        </div>
+      </div>
+
+      {/* Images - OUTSIDE content container */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Pattern SVG */}
+        <div className="hidden lg:block absolute top-0 right-0 w-[50vw] h-full">
+          <Image
+            src="/assets/patter-bg.svg"
+            alt=""
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        {/* Hero Image */}
+        <div className="hidden lg:block absolute top-0 right-[-100px] w-[45vw] h-full">
+          <Image
+            src="/assets/hero-bg.png"
+            alt=""
+            fill
+            className="object-contain"
+          />
         </div>
       </div>
     </section>

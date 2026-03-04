@@ -49,6 +49,7 @@
 
   /* QuickHire Brand Colors */
   --brand-primary: #4640DE;
+  --brand-accent: #26A4FF;
   --hero-bg: #F8F8FD;
 }
 
@@ -93,6 +94,7 @@
   --font-epilogue: "Epilogue", sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-brand-primary: var(--brand-primary);
+  --color-brand-accent: var(--brand-accent);
   --color-hero-bg: var(--hero-bg);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
