@@ -23,7 +23,7 @@ export function JobCard({ job }: JobCardProps) {
 
   return (
     <Link href={`/jobs/${job.id}`}>
-      <div className="group bg-white border border-gray-200 p-6 hover:bg-brand-primary hover:border-brand-primary transition-all duration-300 h-72 flex flex-col">
+      <div className="group bg-white border border-gray-200 p-6 hover:bg-brand-primary hover:border-brand-primary transition-all duration-300 h-56 md:h-72 flex flex-col">
         {/* Header: Logo + Job Type Badge */}
         <div className="flex justify-between items-start mb-3">
           {/* Company Logo */}

@@ -54,14 +54,6 @@ export default function AdminPage() {
       <div className="lg:ml-64">
         <AdminHeader onMenuClick={() => setMobileOpen(!mobileOpen)} />
         <main className="p-4 lg:p-6">
-          {/* Welcome */}
-          <div className="mb-6">
-            <h1 className="font-clash-display font-semibold text-2xl text-gray-900">
-              Welcome back, Admin
-            </h1>
-            <p className="font-clash-display text-gray-500 mt-1">Manage your jobs and applications</p>
-          </div>
-
           {/* Stats Grid */}
           <div className="grid grid-cols-2 gap-4 mb-6">
             {statCards.map((stat) => (

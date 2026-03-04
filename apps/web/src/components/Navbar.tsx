@@ -68,15 +68,12 @@ export function Navbar() {
                 >
                   Dashboard
                 </Link>
-                <div className="flex items-center gap-3">
-                  <span className="text-sm text-gray-600">Welcome, <span className="font-medium">{user.name}</span></span>
-                  <button
-                    onClick={handleLogout}
-                    className="text-base font-medium text-brand-primary hover:underline"
-                  >
-                    Logout
-                  </button>
-                </div>
+                <button
+                  onClick={handleLogout}
+                  className="text-base font-medium text-brand-primary hover:underline"
+                >
+                  Logout
+                </button>
               </>
             ) : (
               <>
@@ -129,9 +126,6 @@ export function Navbar() {
             <hr className="border-gray-200" />
             {user ? (
               <>
-                <div className="py-2 text-sm text-gray-600">
-                  Welcome, <span className="font-medium">{user.name}</span>
-                </div>
                 <Link
                   href="/admin"
                   onClick={() => setMobileMenuOpen(false)}
