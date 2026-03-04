@@ -9,7 +9,7 @@
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.mjs",
     "seed": "tsx scripts/seed.ts",
-    "prepare": "husky"
+    "prepare": "[ -d .git ] && husky || true"
   },
   "dependencies": {
     "@quick-hire/db": "*",
