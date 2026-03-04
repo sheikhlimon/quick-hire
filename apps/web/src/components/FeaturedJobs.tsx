@@ -13,7 +13,7 @@ export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
       <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-[124px]">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
-          <h2 className="font-clash-display font-semibold text-2xl leading-[120%]">
+          <h2 className="font-clash-display font-semibold text-[48px] leading-[110%] tracking-normal">
             <span className="text-text-primary">Featured</span>
             <span className="text-brand-primary"> jobs</span>
           </h2>
