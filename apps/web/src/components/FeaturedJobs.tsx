@@ -43,9 +43,9 @@ export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
             const categoryStyles = getCategoryStyles(job.category);
             return (
               <Link key={job.id} href={`/jobs/${job.id}`}>
-                <div className="bg-white border border-gray-200 p-6 hover:shadow-md transition-all duration-200 h-64">
+                <div className="group bg-white border border-gray-200 p-6 hover:bg-brand-primary hover:border-brand-primary transition-all duration-300 h-56 md:h-72 flex flex-col">
                   {/* Header: Logo + Job Type Badge */}
-                  <div className="flex justify-between items-start mb-4">
+                  <div className="flex justify-between items-start mb-3">
                     {/* Company Logo */}
                     <div className="flex-shrink-0">
                       {job.logo ? (
@@ -57,7 +57,7 @@ export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
                           className="rounded-full w-12 h-12"
                         />
                       ) : (
-                        <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
+                        <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-white/20 transition-colors">
                           <span className="text-brand-primary font-semibold text-base">
                             {job.company.charAt(0)}
                           </span>
@@ -66,20 +66,20 @@ export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
                     </div>
 
                     {/* Job Type Badge - Light blue background, square */}
-                    <span className="font-epilogue px-3 py-1 text-xs font-medium bg-blue-50 text-brand-accent">
+                    <span className="font-epilogue px-3 py-1 text-xs font-medium bg-blue-50 text-brand-accent group-hover:bg-white/20 group-hover:text-white transition-colors">
                       {job.type}
                     </span>
                   </div>
 
                   {/* Job Title */}
-                  <h3 className="font-clash-display font-semibold text-lg text-gray-900 mb-3">
+                  <h3 className="font-clash-display font-semibold text-lg text-gray-900 mb-2 group-hover:text-white transition-colors">
                     {job.title}
                   </h3>
 
                   {/* Company and Location */}
-                  <div className="flex items-center gap-2 text-gray-500 mb-4">
+                  <div className="flex items-center gap-2 text-gray-500 mb-2 group-hover:text-white/90 transition-colors">
                     <span className="font-epilogue text-sm">{job.company}</span>
-                    <span className="text-gray-300">•</span>
+                    <span className="text-gray-300 group-hover:text-white/50">•</span>
                     <div className="flex items-center gap-1">
                       <MapPinIcon className="w-3 h-3" />
                       <span className="font-epilogue text-sm">{job.location}</span>
@@ -87,14 +87,17 @@ export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
                   </div>
 
                   {/* Job Description Preview - Truncate to 2 lines */}
-                  <p className="hidden md:block font-epilogue text-gray-500 text-sm leading-relaxed mb-5 line-clamp-2">
+                  <p className="hidden md:block font-epilogue text-gray-500 text-sm leading-relaxed mb-2 line-clamp-2 group-hover:text-white/80 transition-colors">
                     {job.description}
                   </p>
+
+                  {/* Spacer */}
+                  <div className="flex-1"></div>
 
                   {/* Category Tag */}
                   <div>
                     <span
-                      className={`font-epilogue px-4 py-1.5 rounded-full text-xs font-medium ${categoryStyles.bg} ${categoryStyles.text}`}
+                      className={`font-epilogue px-4 py-1.5 rounded-full text-xs font-medium ${categoryStyles.bg} ${categoryStyles.text} group-hover:bg-white/20 group-hover:text-white transition-colors`}
                     >
                       {job.category}
                     </span>
