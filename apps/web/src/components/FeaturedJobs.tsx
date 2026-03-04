@@ -28,7 +28,7 @@ export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
         </div>
 
         {/* Job Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-12">
           {jobs.map((job) => (
             <Link key={job.id} href={`/jobs/${job.id}`}>
               <Card className="p-4 md:p-5 min-h-[200px] md:min-h-[220px] hover:shadow-md transition-shadow">
