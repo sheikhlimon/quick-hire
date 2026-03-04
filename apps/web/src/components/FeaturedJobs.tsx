@@ -66,7 +66,7 @@ export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
                     </div>
 
                     {/* Job Type Badge - Light blue background, square */}
-                    <span className="px-3 py-1 text-xs font-medium bg-blue-50 text-brand-accent">
+                    <span className="font-epilogue px-3 py-1 text-xs font-medium bg-blue-50 text-brand-accent">
                       {job.type}
                     </span>
                   </div>
@@ -78,23 +78,23 @@ export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
 
                   {/* Company and Location */}
                   <div className="flex items-center gap-2 text-gray-500 mb-4">
-                    <span className="text-sm">{job.company}</span>
+                    <span className="font-epilogue text-sm">{job.company}</span>
                     <span className="text-gray-300">•</span>
                     <div className="flex items-center gap-1">
                       <MapPinIcon className="w-3 h-3" />
-                      <span className="text-sm">{job.location}</span>
+                      <span className="font-epilogue text-sm">{job.location}</span>
                     </div>
                   </div>
 
                   {/* Job Description Preview - Truncate to 2 lines */}
-                  <p className="hidden md:block text-gray-500 text-sm leading-relaxed mb-5 line-clamp-2">
+                  <p className="hidden md:block font-epilogue text-gray-500 text-sm leading-relaxed mb-5 line-clamp-2">
                     {job.description}
                   </p>
 
                   {/* Category Tag */}
                   <div>
                     <span
-                      className={`px-4 py-1.5 rounded-full text-xs font-medium ${categoryStyles.bg} ${categoryStyles.text}`}
+                      className={`font-epilogue px-4 py-1.5 rounded-full text-xs font-medium ${categoryStyles.bg} ${categoryStyles.text}`}
                     >
                       {job.category}
                     </span>

@@ -84,21 +84,21 @@ export function LatestJobs({ jobs = [] }: LatestJobsProps) {
 
                       {/* Company and Location */}
                       <div className="flex items-center gap-2 text-text-secondary mb-4">
-                        <span className="text-sm">{job.company}</span>
+                        <span className="font-epilogue text-sm">{job.company}</span>
                         <span className="text-gray-300">•</span>
                         <div className="flex items-center gap-1">
                           <MapPinIcon className="w-3 h-3" />
-                          <span className="text-sm">{job.location}</span>
+                          <span className="font-epilogue text-sm">{job.location}</span>
                         </div>
                       </div>
 
                       {/* Tags */}
                       <div className="flex items-center gap-2">
-                        <span className={`px-3 py-1 rounded-full text-xs font-medium ${jobTypeStyles.bg} ${jobTypeStyles.text}`}>
+                        <span className={`font-epilogue px-3 py-1 rounded-full text-xs font-medium ${jobTypeStyles.bg} ${jobTypeStyles.text}`}>
                           {job.type}
                         </span>
                         <span
-                          className={`px-3 py-1 rounded-full text-xs font-medium ${categoryStyles.bg} ${categoryStyles.text}`}
+                          className={`font-epilogue px-3 py-1 rounded-full text-xs font-medium ${categoryStyles.bg} ${categoryStyles.text}`}
                         >
                           {job.category}
                         </span>
