@@ -85,6 +85,17 @@ export function CategoriesSection({ categories = [] }: CategoriesSectionProps) {
             );
           })}
         </div>
+
+        {/* Mobile: Show all jobs after cards */}
+        <div className="md:hidden flex justify-start mt-6">
+          <a
+            href="/jobs"
+            className="flex text-brand-primary font-medium items-center gap-2 text-sm"
+          >
+            Show all jobs
+            <ChevronRightIcon className="w-4 h-4" />
+          </a>
+        </div>
       </div>
     </section>
   );
