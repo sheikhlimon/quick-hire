@@ -5,7 +5,7 @@ import { AdminHeader } from "@/components/admin/AdminHeader";
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import Link from "next/link";
-import { PencilIcon, TrashIcon, EyeIcon } from "@heroicons/react/24/outline";
+import { TrashIcon, EyeIcon } from "@heroicons/react/24/outline";
 
 interface Job {
   id: string;
@@ -163,13 +163,6 @@ export default function AdminJobsPage() {
                       >
                         <EyeIcon className="w-4 h-4" />
                       </Link>
-                      <Link
-                        href={`/admin/jobs/${job.id}/edit`}
-                        className="p-2 text-gray-500 hover:text-brand-primary"
-                        title="Edit"
-                      >
-                        <PencilIcon className="w-4 h-4" />
-                      </Link>
                       <button
                         onClick={() => handleDelete(job.id)}
                         className="p-2 text-gray-500 hover:text-red-600"
@@ -217,13 +210,6 @@ export default function AdminJobsPage() {
                               title="View"
                             >
                               <EyeIcon className="w-4 h-4" />
-                            </Link>
-                            <Link
-                              href={`/admin/jobs/${job.id}/edit`}
-                              className="p-2 text-gray-500 hover:text-brand-primary"
-                              title="Edit"
-                            >
-                              <PencilIcon className="w-4 h-4" />
                             </Link>
                             <button
                               onClick={() => handleDelete(job.id)}

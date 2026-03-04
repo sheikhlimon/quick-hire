@@ -35,12 +35,6 @@ export function Navbar() {
               >
                 Find Jobs
               </Link>
-              <Link
-                href="/companies"
-                className="text-base font-normal text-gray-500 hover:text-gray-900 transition-colors"
-              >
-                Browse Companies
-              </Link>
             </div>
           </div>
 
@@ -89,13 +83,6 @@ export function Navbar() {
               className="block text-base font-normal text-gray-500 hover:text-gray-900 transition-colors py-2"
             >
               Find Jobs
-            </Link>
-            <Link
-              href="/companies"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-base font-normal text-gray-500 hover:text-gray-900 transition-colors py-2"
-            >
-              Browse Companies
             </Link>
             <hr className="border-gray-200" />
             <Link

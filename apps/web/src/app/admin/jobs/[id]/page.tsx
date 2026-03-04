@@ -5,7 +5,7 @@ import { AdminHeader } from "@/components/admin/AdminHeader";
 import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
-import { PencilIcon, TrashIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { TrashIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
 
 interface Job {
@@ -176,13 +176,6 @@ export default function JobDetailPage() {
               <p className="font-clash-display text-gray-500 mt-1">{job.company} • {job.location}</p>
             </div>
             <div className="flex items-center gap-2">
-              <Link
-                href={`/admin/jobs/${job.id}/edit`}
-                className="inline-flex items-center gap-2 border border-gray-300 text-gray-700 px-4 py-2 font-medium text-sm hover:bg-gray-50 transition-colors"
-              >
-                <PencilIcon className="w-4 h-4" />
-                Edit
-              </Link>
               <button
                 onClick={handleDelete}
                 className="inline-flex items-center gap-2 border border-red-300 text-red-600 px-4 py-2 font-medium text-sm hover:bg-red-50 transition-colors"
