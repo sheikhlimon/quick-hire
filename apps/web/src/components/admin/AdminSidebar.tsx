@@ -10,7 +10,7 @@ import {
 
 interface NavItem {
   name: string;
-  href: string;
+  href: "/admin" | "/admin/jobs" | "/admin/applications";
   icon: React.ComponentType<{ className?: string }>;
 }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -8,7 +8,7 @@ import { JobCard } from "@/components/JobCard";
 import { getJobs } from "@/lib/api";
 import type { Job } from "@/lib/api";
 
-export default function JobsPage() {
+function JobsContent() {
   const searchParams = useSearchParams();
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(true);
@@ -186,5 +186,13 @@ export default function JobsPage() {
 
       <Footer />
     </div>
+  );
+}
+
+export default function JobsPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gray-50 flex items-center justify-center"><p className="font-epilogue text-text-secondary text-lg">Loading...</p></div>}>
+      <JobsContent />
+    </Suspense>
   );
 }
