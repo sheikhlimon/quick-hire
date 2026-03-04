@@ -21,7 +21,7 @@ export function AdminHeader({ onMenuClick }: AdminHeaderProps) {
             </svg>
           </button>
 
-          <div className="flex items-center gap-2">
+          <Link href="/admin" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <img
               src="/assets/logo.png"
               alt="QuickHire"
@@ -29,7 +29,7 @@ export function AdminHeader({ onMenuClick }: AdminHeaderProps) {
             />
             <span className="text-gray-400">/</span>
             <span className="text-gray-600">Admin</span>
-          </div>
+          </Link>
         </div>
 
         <Link

@@ -49,7 +49,7 @@ export function AdminSidebar({ mobileOpen, onCloseMobile }: AdminSidebarProps) {
       >
         <div className="flex flex-col h-full">
           {/* Logo */}
-          <div className="flex items-center gap-2 h-16 px-6 border-b border-gray-200">
+          <Link href="/admin" className="flex items-center gap-2 h-16 px-6 border-b border-gray-200 hover:opacity-80 transition-opacity">
             <img
               src="/assets/logo.png"
               alt="QuickHire"
@@ -58,7 +58,7 @@ export function AdminSidebar({ mobileOpen, onCloseMobile }: AdminSidebarProps) {
             <span className="font-clash-display font-bold text-xl text-gray-900">
               QuickHire
             </span>
-          </div>
+          </Link>
 
           {/* Navigation */}
           <nav className="flex-1 p-4 space-y-1">

@@ -103,7 +103,18 @@ export default function JobDetailPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <nav className="bg-white border-b border-gray-200">
-        <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 h-16 flex items-center">
+        <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 h-16 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2">
+            <img
+              src="/assets/logo.png"
+              alt="QuickHire"
+              className="h-8 w-8"
+            />
+            <span className="font-clash-display font-bold text-xl text-gray-900">
+              QuickHire
+            </span>
+          </Link>
+
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900"
