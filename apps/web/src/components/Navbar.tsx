@@ -41,7 +41,7 @@ export function Navbar() {
           {/* Desktop - Auth Buttons */}
           <div className="hidden md:flex items-center gap-6">
             <Link
-              href="/admin"
+              href="/login"
               className="text-base font-medium text-brand-primary px-8 py-3"
             >
               Login
@@ -86,7 +86,7 @@ export function Navbar() {
             </Link>
             <hr className="border-gray-200" />
             <Link
-              href="/admin"
+              href="/login"
               onClick={() => setMobileMenuOpen(false)}
               className="block text-base font-medium text-brand-primary py-2"
             >
