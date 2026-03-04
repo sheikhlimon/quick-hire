@@ -2,14 +2,13 @@ import Image from "next/image";
 
 export function CTASection() {
   return (
-    <section className="bg-brand-primary w-full py-16">
-      <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12">
+    <section className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 max-w-6xl bg-brand-primary py-12 md:py-16 relative" style={{ clipPath: 'polygon(70px 0, 100% 0, 100% calc(100% - 70px), calc(100% - 70px) 100%, 0 100%, 0 70px)' }}>
+        <div className="flex flex-col md:flex-row items-start gap-6 md:gap-12">
           {/* Left Content */}
-          <div className="w-full md:max-w-md flex flex-col gap-6">
+          <div className="w-full md:max-w-md flex flex-col gap-6 pt-8 pb-16">
             {/* Heading */}
-            <h2 className="font-clash-display font-semibold text-[48px] leading-[110%] text-white">
-              Start posting jobs today
+            <h2 className="font-clash-display font-semibold text-4xl md:text-5xl text-white leading-none">
+              Start posting<br />jobs today
             </h2>
 
             {/* Subtext */}
@@ -23,18 +22,17 @@ export function CTASection() {
             </button>
           </div>
 
-          {/* Right Image */}
-          <div className="w-full md:w-auto flex-shrink-0">
+          {/* Right Image - Positioned at bottom on desktop */}
+          <div className="w-full md:w-auto md:absolute md:bottom-0 md:right-12">
             <Image
               src="/assets/admin.png"
               alt="Admin hiring illustration"
               width={564}
               height={346}
-              className="w-full max-w-[500px] h-auto"
+              className="h-auto w-auto mx-auto"
             />
           </div>
         </div>
-      </div>
     </section>
   );
 }
