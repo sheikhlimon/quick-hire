@@ -72,7 +72,7 @@ export default function JobDetailPage() {
       } else {
         // Show detailed error message
         if (data.errors && data.errors.length > 0) {
-          const errorMessages = data.errors.map((e: any) => e.message).join("\n");
+          const errorMessages = data.errors.map((e: { message: string }) => e.message).join("\n");
           alert(`Validation errors:\n${errorMessages}`);
         } else {
           alert(data.message || "Failed to submit application");
