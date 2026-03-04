@@ -127,7 +127,7 @@ export default function JobDetailPage() {
               <h1 className="font-clash-display font-semibold text-2xl text-gray-900">
                 {job.title}
               </h1>
-              <p className="text-gray-500 mt-1">{job.company} • {job.location}</p>
+              <p className="font-clash-display text-gray-500 mt-1">{job.company} • {job.location}</p>
             </div>
             <div className="flex items-center gap-2">
               <Link
@@ -165,7 +165,7 @@ export default function JobDetailPage() {
 
             <div>
               <h2 className="font-clash-display font-semibold text-gray-900 mb-2">Job Description</h2>
-              <p className="text-gray-600 whitespace-pre-wrap">{job.description}</p>
+              <p className="font-clash-display text-gray-600 whitespace-pre-wrap">{job.description}</p>
             </div>
           </div>
 

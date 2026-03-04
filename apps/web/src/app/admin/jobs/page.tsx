@@ -66,7 +66,7 @@ export default function AdminJobsPage() {
               <h1 className="font-clash-display font-semibold text-2xl text-gray-900">
                 Job Listing
               </h1>
-              <p className="text-gray-500 mt-1">{jobs.length} jobs posted</p>
+              <p className="font-clash-display text-gray-500 mt-1">{jobs.length} jobs posted</p>
             </div>
             <Link
               href="/admin/jobs/new"

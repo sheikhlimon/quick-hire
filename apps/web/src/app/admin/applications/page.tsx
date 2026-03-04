@@ -73,7 +73,7 @@ export default function ApplicationsPage() {
             <h1 className="font-clash-display font-semibold text-2xl text-gray-900">
               Applications
             </h1>
-            <p className="text-gray-500 mt-1">{applications.length} total applications</p>
+            <p className="font-clash-display text-gray-500 mt-1">{applications.length} total applications</p>
           </div>
 
           {/* Applications List */}
@@ -81,7 +81,7 @@ export default function ApplicationsPage() {
             <div className="text-center py-12 text-gray-500">Loading...</div>
           ) : applications.length === 0 ? (
             <div className="bg-white border border-gray-200 p-12 text-center">
-              <p className="text-gray-500">No applications yet</p>
+              <p className="font-clash-display text-gray-500">No applications yet</p>
             </div>
           ) : (
             <div className="bg-white border border-gray-200 divide-y divide-gray-200">
@@ -97,7 +97,7 @@ export default function ApplicationsPage() {
                         </div>
                         <div>
                           <h3 className="font-semibold text-gray-900">{app.name}</h3>
-                          <p className="text-sm text-gray-500">{app.email}</p>
+                          <p className="font-clash-display text-sm text-gray-500">{app.email}</p>
                           <p className="text-sm text-gray-600 mt-1">
                             Applied for: {getJobTitle(app.jobId)}
                           </p>

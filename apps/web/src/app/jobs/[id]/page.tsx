@@ -166,7 +166,7 @@ export default function JobDetailPage() {
           <h2 className="font-clash-display font-semibold text-xl text-gray-900 mb-4">
             Job Description
           </h2>
-          <p className="text-gray-600 whitespace-pre-wrap leading-relaxed">
+          <p className="font-clash-display text-gray-600 whitespace-pre-wrap leading-relaxed">
             {job.description}
           </p>
         </div>
@@ -254,7 +254,7 @@ export default function JobDetailPage() {
               <h2 className="font-clash-display font-semibold text-xl text-gray-900 mb-2">
                 Interested in this position?
               </h2>
-              <p className="text-gray-500 mb-6">Apply now and join our team!</p>
+              <p className="font-clash-display text-gray-500 mb-6">Apply now and join our team!</p>
               <button
                 onClick={() => setShowForm(true)}
                 className="bg-brand-primary text-white px-8 py-3 font-medium text-sm hover:bg-brand-primary/90 transition-colors"

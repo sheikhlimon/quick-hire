@@ -65,7 +65,7 @@ export default function NewJobPage() {
             <h1 className="font-clash-display font-semibold text-2xl text-gray-900">
               Create New Job
             </h1>
-            <p className="text-gray-500 mt-1">Fill in the details to post a new job</p>
+            <p className="font-clash-display text-gray-500 mt-1">Fill in the details to post a new job</p>
           </div>
 
           {/* Form */}
