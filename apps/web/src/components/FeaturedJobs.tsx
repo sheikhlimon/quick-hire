@@ -52,7 +52,7 @@ export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
                 </div>
 
                 {/* Job Title */}
-                <h3 className="font-semibold text-base text-text-primary mb-2">
+                <h3 className="font-clash-display font-semibold text-base text-text-primary mb-2">
                   {job.title}
                 </h3>
 

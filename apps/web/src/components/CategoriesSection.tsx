@@ -61,7 +61,7 @@ export function CategoriesSection({ categories = [] }: CategoriesSectionProps) {
                 <div className="md:hidden flex items-center p-4 h-[70px]">
                   <Icon className="w-6 h-6 shrink-0 text-[#6C5CE7] group-hover/card:text-white transition-colors" />
                   <div className="flex-1 flex items-center justify-between ml-3">
-                    <h3 className="font-semibold text-base text-text-primary group-hover/card:text-white transition-colors">
+                    <h3 className="font-clash-display font-semibold text-base text-text-primary group-hover/card:text-white transition-colors">
                       {category.name}
                     </h3>
                     <span className="text-sm text-text-secondary group-hover/card:text-white transition-colors">{category.jobs} jobs</span>
@@ -72,7 +72,7 @@ export function CategoriesSection({ categories = [] }: CategoriesSectionProps) {
                 <div className="hidden md:flex flex-col p-8 w-[274px] h-[214px]">
                   <Icon className="w-10 h-10 text-[#6C5CE7] group-hover/card:text-white transition-colors" />
                   <div className="mt-6 flex-1 flex flex-col justify-end">
-                    <h3 className="font-semibold text-lg mb-1 text-text-primary group-hover/card:text-white transition-colors">
+                    <h3 className="font-clash-display font-semibold text-lg mb-1 text-text-primary group-hover/card:text-white transition-colors">
                       {category.name}
                     </h3>
                     <div className="font-epilogue font-normal text-base leading-[160%] text-text-secondary group-hover/card:text-white flex items-center gap-2 transition-colors">

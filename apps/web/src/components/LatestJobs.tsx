@@ -67,7 +67,7 @@ export function LatestJobs({ jobs = [] }: LatestJobsProps) {
                     {/* Job Details */}
                     <div className="flex-1">
                       {/* Job Title */}
-                      <h3 className="font-semibold text-base md:text-base text-text-primary mb-1">
+                      <h3 className="font-clash-display font-semibold text-base md:text-base text-text-primary mb-1">
                         {job.title}
                       </h3>
 
