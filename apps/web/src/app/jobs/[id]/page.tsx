@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { MapPinIcon, ArrowLeftIcon, CalendarIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 interface Job {
   id: string;
@@ -66,21 +67,21 @@ export default function JobDetailPage() {
       const data = await res.json();
 
       if (res.ok) {
-        alert("Application submitted successfully!");
+        toast.success("Application submitted successfully!");
         setFormData({ name: "", email: "", resumeLink: "", coverNote: "" });
         setShowForm(false);
       } else {
         // Show detailed error message
         if (data.errors && data.errors.length > 0) {
-          const errorMessages = data.errors.map((e: { message: string }) => e.message).join("\n");
-          alert(`Validation errors:\n${errorMessages}`);
+          const errorMessages = data.errors.map((e: { message: string }) => e.message).join(", ");
+          toast.error(`Validation errors: ${errorMessages}`);
         } else {
-          alert(data.message || "Failed to submit application");
+          toast.error(data.message || "Failed to submit application");
         }
       }
     } catch (error) {
       console.error("Failed to submit:", error);
-      alert("Failed to submit application. Please try again.");
+      toast.error("Failed to submit application. Please try again.");
     } finally {
       setSubmitting(false);
     }

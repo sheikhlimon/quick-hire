@@ -4,6 +4,7 @@ import { AdminSidebar } from "@/components/admin/AdminSidebar";
 import { AdminHeader } from "@/components/admin/AdminHeader";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const JOB_TYPES = ["Full-time", "Part-time", "Contract", "Remote", "Internship"];
 const CATEGORIES = ["Technology", "Design", "Marketing", "Sales", "Engineering", "Business", "Finance", "Human Resource"];
@@ -39,13 +40,15 @@ export default function NewJobPage() {
       });
 
       if (res.ok) {
+        toast.success("Job created successfully!");
         router.push("/admin/jobs");
       } else {
-        alert("Failed to create job");
+        const data = await res.json();
+        toast.error(data.message || "Failed to create job");
       }
     } catch (error) {
       console.error("Failed to create job:", error);
-      alert("Failed to create job");
+      toast.error("Failed to create job. Please try again.");
     } finally {
       setLoading(false);
     }

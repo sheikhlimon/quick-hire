@@ -27,6 +27,7 @@
     "@quick-hire/env": "*",
     "dotenv": "^17.2.2",
     "jsonwebtoken": "^9.0.3",
+    "react-hot-toast": "^2.6.0",
     "zod": "^4.1.13"
   },
   "devDependencies": {

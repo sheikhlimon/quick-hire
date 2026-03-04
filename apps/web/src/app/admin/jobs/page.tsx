@@ -3,6 +3,7 @@
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
 import { AdminHeader } from "@/components/admin/AdminHeader";
 import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 import Link from "next/link";
 import { PencilIcon, TrashIcon, EyeIcon } from "@heroicons/react/24/outline";
 
@@ -39,16 +40,61 @@ export default function AdminJobsPage() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this job?")) return;
-
-    try {
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/jobs/${id}`, {
-        method: "DELETE",
+    // Show custom confirmation using toast
+    const confirmDelete = () =>
+      new Promise<boolean>((resolve) => {
+        toast(
+          (t) => (
+            <div className="flex flex-col gap-2">
+              <p className="font-medium">Are you sure you want to delete this job?</p>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => {
+                    toast.dismiss(t.id);
+                    resolve(false);
+                  }}
+                  className="px-3 py-1 text-sm bg-gray-200 hover:bg-gray-300 rounded"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => {
+                    toast.dismiss(t.id);
+                    resolve(true);
+                  }}
+                  className="px-3 py-1 text-sm bg-red-600 text-white hover:bg-red-700 rounded"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          ),
+          { duration: Infinity }
+        );
       });
-      setJobs(jobs.filter((job) => job.id !== id));
-    } catch (error) {
-      console.error("Failed to delete job:", error);
-    }
+
+    const confirmed = await confirmDelete();
+    if (!confirmed) return;
+
+    toast.promise(
+      (async () => {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/jobs/${id}`, {
+          method: "DELETE",
+        });
+
+        if (!res.ok) {
+          throw new Error("Failed to delete job");
+        }
+
+        setJobs(jobs.filter((job) => job.id !== id));
+        return true;
+      })(),
+      {
+        loading: "Deleting job...",
+        success: "Job deleted successfully!",
+        error: "Failed to delete job",
+      }
+    );
   };
 
   return (
