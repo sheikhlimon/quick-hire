@@ -37,11 +37,11 @@ export function CategoriesSection({ categories = [] }: CategoriesSectionProps) {
         <div className="flex justify-between items-center mb-10">
           <h2 className="font-clash-display font-semibold text-3xl md:text-[48px] leading-[110%] tracking-normal">
             <span>Explore by</span>
-            <span className="text-brand-primary"> category</span>
+            <span className="text-brand-accent"> category</span>
           </h2>
           <a
             href="/jobs"
-            className="text-brand-primary font-medium flex items-center gap-2 text-sm md:text-base"
+            className="hidden md:flex text-brand-primary font-medium items-center gap-2 text-sm md:text-base"
           >
             Show all jobs
             <ChevronRightIcon className="w-4 h-4" />

@@ -30,7 +30,7 @@ export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
           </h2>
           <a
             href="/jobs"
-            className="hidden md:flex text-brand-primary font-normal items-center gap-2 text-sm hover:underline"
+            className="hidden md:flex text-brand-primary font-medium items-center gap-2 text-sm md:text-base"
           >
             Show all jobs
             <ChevronRightIcon className="w-4 h-4" />
