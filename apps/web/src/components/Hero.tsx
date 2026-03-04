@@ -2,23 +2,23 @@ import Image from "next/image";
 
 export function Hero() {
   return (
-    <section className="bg-hero-bg w-full min-h-[650px] md:min-h-[750px] lg:min-h-screen relative overflow-hidden">
+    <section className="bg-hero-bg w-full min-h-[600px] md:min-h-[700px] lg:min-h-screen relative overflow-hidden">
       {/* Content */}
-      <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 min-h-[650px] md:min-h-[750px] lg:min-h-screen relative z-10">
+      <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 min-h-[600px] md:min-h-[700px] lg:min-h-screen relative z-10">
         <div className="flex flex-col justify-center h-full max-w-md lg:max-w-2xl py-12 lg:py-16">
           {/* Discover */}
-          <h2 className="font-clash-display font-semibold text-5xl md:text-6xl lg:text-[72px] leading-[110%] tracking-normal text-gray-900 mb-0.5">
+          <h2 className="font-clash-display font-semibold text-5xl md:text-6xl lg:text-7xl text-gray-900 mb-0.5">
             Discover
           </h2>
 
           {/* more than */}
-          <h2 className="font-clash-display font-semibold text-5xl md:text-6xl lg:text-[72px] leading-[110%] tracking-normal text-gray-900 mb-0.5">
+          <h2 className="font-clash-display font-semibold text-5xl md:text-6xl lg:text-7xl text-gray-900 mb-0.5">
             more than
           </h2>
 
           {/* 5000+ Jobs with underline */}
           <div className="mb-6 w-fit">
-            <h2 className="font-clash-display font-semibold text-5xl md:text-6xl lg:text-[72px] leading-[110%] tracking-normal text-brand-accent">
+            <h2 className="font-clash-display font-semibold text-5xl md:text-6xl lg:text-7xl text-brand-accent">
               5000+ Jobs
             </h2>
             <img
