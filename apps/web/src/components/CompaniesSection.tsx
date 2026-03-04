@@ -16,12 +16,12 @@ export function CompaniesSection() {
           Companies we helped grow
         </h2>
 
-        {/* Mobile: 2 columns, Tesla spans 2. Desktop: all in one row */}
+        {/* Mobile: 2 columns, Desktop: all in one row */}
         <div className="grid grid-cols-2 md:flex md:justify-between md:items-center gap-x-8 gap-y-8 md:gap-0 max-w-5xl mx-auto">
           {companies.map((company) => (
             <div
               key={company.name}
-              className={`flex items-center justify-center grayscale opacity-60 hover:opacity-100 transition-opacity ${company.wide ? "col-span-2" : ""}`}
+              className="flex items-center justify-center grayscale opacity-60 hover:opacity-100 transition-opacity"
             >
               <Image
                 src={company.logo}
