@@ -3,6 +3,7 @@ import cors from "cors";
 import express from "express";
 import jobRoutes from "./routes/jobs";
 import applicationRoutes from "./routes/applications";
+import authRoutes from "./routes/auth";
 import { errorHandler, notFoundHandler } from "./middleware/error";
 
 const app = express();
@@ -22,6 +23,7 @@ app.get("/", (_req, res) => {
 
 app.use("/api/jobs", jobRoutes);
 app.use("/api/applications", applicationRoutes);
+app.use("/api/auth", authRoutes);
 
 // 404 handler for undefined routes
 app.use(notFoundHandler);

@@ -14,15 +14,19 @@
   "dependencies": {
     "@quick-hire/db": "*",
     "@quick-hire/env": "*",
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.3",
     "zod": "^4.1.13"
   },
   "devDependencies": {
     "@quick-hire/config": "*",
+    "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^22.13.14",
     "tsdown": "^0.16.5",
     "tsx": "^4.19.2",

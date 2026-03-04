@@ -26,6 +26,12 @@ export const applicationSchema = z.object({
   coverNote: z.string().optional(),
 });
 
+export const authSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email format"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+});
+
 // Validation middleware factory
 export function validate(schema: z.ZodObject<z.ZodRawShape>) {
   return (req: Request, res: Response, next: NextFunction) => {
