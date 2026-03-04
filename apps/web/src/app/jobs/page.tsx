@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { JobCard } from "@/components/JobCard";
@@ -8,6 +9,7 @@ import { getJobs } from "@/lib/api";
 import type { Job } from "@/lib/api";
 
 export default function JobsPage() {
+  const searchParams = useSearchParams();
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -16,7 +18,13 @@ export default function JobsPage() {
 
   useEffect(() => {
     fetchJobs();
-  }, []);
+
+    // Read category from URL params
+    const categoryFromUrl = searchParams.get("category");
+    if (categoryFromUrl) {
+      setSelectedCategory(categoryFromUrl);
+    }
+  }, [searchParams]);
 
   const fetchJobs = async () => {
     try {

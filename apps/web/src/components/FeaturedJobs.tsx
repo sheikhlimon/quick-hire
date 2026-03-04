@@ -1,22 +1,10 @@
-import Image from "next/image";
-import { MapPinIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import type { Job } from "@/lib/api";
-import Link from "next/link";
+import { JobCard } from "./JobCard";
 
 interface FeaturedJobsProps {
   jobs?: Job[];
 }
-
-const getCategoryStyles = (category: string): { bg: string; text: string } => {
-  const styles: Record<string, { bg: string; text: string }> = {
-    Marketing: { bg: "bg-orange-100", text: "text-orange-700" },
-    Design: { bg: "bg-green-100", text: "text-green-700" },
-    Technology: { bg: "bg-red-100", text: "text-red-700" },
-    Business: { bg: "bg-purple-100", text: "text-purple-700" },
-    Sales: { bg: "bg-blue-100", text: "text-blue-700" },
-  };
-  return styles[category] || { bg: "bg-gray-100", text: "text-gray-700" };
-};
 
 export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
   return (
@@ -39,73 +27,9 @@ export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
 
         {/* Job Cards Grid - 4 columns on desktop */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {jobs.map((job) => {
-            const categoryStyles = getCategoryStyles(job.category);
-            return (
-              <Link key={job.id} href={`/jobs/${job.id}`}>
-                <div className="group bg-white border border-gray-200 p-6 hover:bg-brand-primary hover:border-brand-primary transition-all duration-300 h-56 md:h-72 flex flex-col">
-                  {/* Header: Logo + Job Type Badge */}
-                  <div className="flex justify-between items-start mb-3">
-                    {/* Company Logo */}
-                    <div className="flex-shrink-0">
-                      {job.logo ? (
-                        <Image
-                          src={job.logo}
-                          alt={job.company}
-                          width={48}
-                          height={48}
-                          className="rounded-full w-12 h-12"
-                        />
-                      ) : (
-                        <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-white/20 transition-colors">
-                          <span className="text-brand-primary font-semibold text-base">
-                            {job.company.charAt(0)}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Job Type Badge - Light blue background, square */}
-                    <span className="font-epilogue px-3 py-1 text-xs font-medium bg-blue-50 text-brand-accent group-hover:bg-white/20 group-hover:text-white transition-colors">
-                      {job.type}
-                    </span>
-                  </div>
-
-                  {/* Job Title */}
-                  <h3 className="font-clash-display font-semibold text-lg text-gray-900 mb-2 group-hover:text-white transition-colors">
-                    {job.title}
-                  </h3>
-
-                  {/* Company and Location */}
-                  <div className="flex items-center gap-2 text-gray-500 mb-2 group-hover:text-white/90 transition-colors">
-                    <span className="font-epilogue text-sm">{job.company}</span>
-                    <span className="text-gray-300 group-hover:text-white/50">•</span>
-                    <div className="flex items-center gap-1">
-                      <MapPinIcon className="w-3 h-3" />
-                      <span className="font-epilogue text-sm">{job.location}</span>
-                    </div>
-                  </div>
-
-                  {/* Job Description Preview - Truncate to 2 lines */}
-                  <p className="hidden md:block font-epilogue text-gray-500 text-sm leading-relaxed mb-2 line-clamp-2 group-hover:text-white/80 transition-colors">
-                    {job.description}
-                  </p>
-
-                  {/* Spacer */}
-                  <div className="flex-1"></div>
-
-                  {/* Category Tag */}
-                  <div>
-                    <span
-                      className={`font-epilogue px-4 py-1.5 rounded-full text-xs font-medium ${categoryStyles.bg} ${categoryStyles.text} group-hover:bg-white/20 group-hover:text-white transition-colors`}
-                    >
-                      {job.category}
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
+          {jobs.map((job) => (
+            <JobCard key={job.id} job={job} />
+          ))}
         </div>
 
         {/* Mobile: Show all jobs after cards */}

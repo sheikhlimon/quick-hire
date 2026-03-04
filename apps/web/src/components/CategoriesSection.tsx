@@ -9,6 +9,7 @@ import {
   CurrencyDollarIcon,
   BuildingOfficeIcon,
 } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 interface Category {
   name: string;
@@ -53,9 +54,10 @@ export function CategoriesSection({ categories = [] }: CategoriesSectionProps) {
           {categories.map((category) => {
             const Icon = categoryIcons[category.name] || ChevronRightIcon;
             return (
-              <div
+              <Link
                 key={category.name}
-                className="group/card relative border border-gray-200 hover:bg-brand-primary hover:border-brand-primary transition-all duration-300 cursor-pointer"
+                href={`/jobs?category=${encodeURIComponent(category.name)}`}
+                className="group/card relative border border-gray-200 hover:bg-brand-primary hover:border-brand-primary transition-all duration-300"
               >
                 {/* Mobile: Horizontal card */}
                 <div className="md:hidden flex items-center p-4 h-[70px]">
@@ -81,7 +83,7 @@ export function CategoriesSection({ categories = [] }: CategoriesSectionProps) {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
