@@ -2,6 +2,7 @@
 
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
 import { AdminHeader } from "@/components/admin/AdminHeader";
+import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
@@ -44,7 +45,8 @@ export default function AdminPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <ProtectedRoute>
+      <div className="min-h-screen bg-gray-50">
       <AdminSidebar
         mobileOpen={mobileOpen}
         onCloseMobile={() => setMobileOpen(false)}
@@ -99,5 +101,6 @@ export default function AdminPage() {
         </main>
       </div>
     </div>
+    </ProtectedRoute>
   );
 }

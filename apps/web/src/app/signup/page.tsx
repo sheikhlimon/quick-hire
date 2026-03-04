@@ -51,6 +51,11 @@ export default function SignupPage() {
 
       if (res.ok) {
         toast.success("Account created successfully!");
+
+        // Store token and user data (auto-login)
+        localStorage.setItem("token", data.data.token);
+        localStorage.setItem("user", JSON.stringify(data.data.user));
+
         router.push("/admin");
       } else {
         toast.error(data.message || "Failed to create account");
