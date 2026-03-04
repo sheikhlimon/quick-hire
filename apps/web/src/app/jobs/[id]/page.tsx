@@ -99,7 +99,7 @@ export default function JobDetailPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <p className="text-gray-500 mb-4">Job not found</p>
-          <Link href="/" className="text-brand-primary font-medium hover:underline">
+          <Link href="/jobs" className="text-brand-primary font-medium hover:underline">
             Back to Jobs
           </Link>
         </div>
@@ -124,7 +124,7 @@ export default function JobDetailPage() {
           </Link>
 
           <Link
-            href="/"
+            href="/jobs"
             className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900"
           >
             <ArrowLeftIcon className="w-4 h-4" />
