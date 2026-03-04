@@ -94,11 +94,11 @@ export function LatestJobs({ jobs = [] }: LatestJobsProps) {
 
                       {/* Tags */}
                       <div className="flex items-center gap-2">
-                        <span className={`px-3 py-1 text-xs font-medium ${jobTypeStyles.bg} ${jobTypeStyles.text}`}>
+                        <span className={`px-3 py-1 rounded-full text-xs font-medium ${jobTypeStyles.bg} ${jobTypeStyles.text}`}>
                           {job.type}
                         </span>
                         <span
-                          className={`px-3 py-1 text-xs font-medium ${categoryStyles.bg} ${categoryStyles.text}`}
+                          className={`px-3 py-1 rounded-full text-xs font-medium ${categoryStyles.bg} ${categoryStyles.text}`}
                         >
                           {job.category}
                         </span>
