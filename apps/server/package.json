@@ -7,7 +7,7 @@
     "check-types": "tsc -b",
     "compile": "bun build --compile --minify --sourcemap --bytecode ./src/index.ts --outfile server",
     "dev": "tsx watch src/index.ts",
-    "start": "npx turbo -F @quick-hire/db db:push --skip-generate && node dist/index.mjs",
+    "start": "npx turbo -F @quick-hire/db db:push && node dist/index.mjs",
     "start:no-db": "node dist/index.mjs",
     "seed": "tsx scripts/seed.ts",
     "prepare": "[ -d .git ] && husky || true"
