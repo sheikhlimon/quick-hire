@@ -93,9 +93,9 @@ export function Hero() {
               </div>
 
               {/* Search button */}
-              <button 
+              <button
                 onClick={handleSearch}
-                className="font-epilogue bg-brand-primary text-white px-5 py-3 font-medium text-base w-full hover:opacity-90 transition-opacity"
+                className="font-epilogue bg-brand-primary text-white px-5 py-3 font-medium text-base w-full hover:opacity-90 transition-opacity cursor-pointer"
               >
                 Search my job
               </button>
@@ -141,9 +141,9 @@ export function Hero() {
               </div>
 
               {/* Search button */}
-              <button 
+              <button
                 onClick={handleSearch}
-                className="font-epilogue bg-brand-primary text-white px-5 py-2 font-medium text-sm whitespace-nowrap flex-shrink-0 hover:opacity-90 transition-opacity"
+                className="font-epilogue bg-brand-primary text-white px-5 py-2 font-medium text-sm whitespace-nowrap flex-shrink-0 hover:opacity-90 transition-opacity cursor-pointer"
               >
                 Search my job
               </button>
