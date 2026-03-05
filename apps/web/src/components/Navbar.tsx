@@ -33,7 +33,7 @@ export function Navbar() {
       <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28">
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo + Navigation Links */}
-          <div className="flex items-center gap-6 md:gap-8">
+          <div className="flex items-center gap-8 md:gap-12">
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/assets/logo.png"
@@ -48,13 +48,16 @@ export function Navbar() {
             </Link>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-6">
               <Link
                 href="/jobs"
                 className="text-base font-normal text-gray-500 hover:text-gray-900 transition-colors"
               >
                 Find Jobs
               </Link>
+              <span className="text-base font-normal text-gray-500 hover:text-gray-900 transition-colors cursor-pointer">
+                Browse Companies
+              </span>
             </div>
           </div>
 
@@ -123,6 +126,12 @@ export function Navbar() {
             >
               Find Jobs
             </Link>
+            <span
+              className="block text-base font-normal text-gray-500 hover:text-gray-900 transition-colors py-2 cursor-pointer"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Browse Companies
+            </span>
             <hr className="border-gray-200" />
             {user ? (
               <>
