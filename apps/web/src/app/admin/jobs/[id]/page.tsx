@@ -36,7 +36,7 @@ export default function JobDetailPage() {
   const [job, setJob] = useState<Job | null>(null);
   const [applications, setApplications] = useState<Application[]>([]);
   const [loading, setLoading] = useState(true);
-  const [showApplications, setShowApplications] = useState(false);
+  const [showApplications, setShowApplications] = useState(true);
 
   useEffect(() => {
     if (params.id) {
@@ -216,7 +216,7 @@ export default function JobDetailPage() {
               </h2>
               <button
                 onClick={() => setShowApplications(!showApplications)}
-                className="text-sm text-brand-primary font-medium hover:underline"
+                className="text-sm text-brand-primary font-medium hover:underline cursor-pointer"
               >
                 {showApplications ? "Hide" : "Show"}
               </button>
@@ -243,14 +243,16 @@ export default function JobDetailPage() {
                       {app.coverNote && (
                         <p className="text-sm text-gray-600 mb-3 line-clamp-2">{app.coverNote}</p>
                       )}
-                      <a
-                        href={app.resumeLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex text-sm px-3 py-1 border border-brand-primary text-brand-primary font-medium hover:bg-brand-primary/10 transition-colors cursor-pointer"
-                      >
-                        View Resume
-                      </a>
+                      <div className="flex justify-end">
+                        <a
+                          href={app.resumeLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex text-sm px-3 py-1 border border-brand-primary text-brand-primary font-medium hover:bg-brand-primary/10 transition-colors cursor-pointer"
+                        >
+                          View Resume
+                        </a>
+                      </div>
                     </div>
                   ))
                 )}
