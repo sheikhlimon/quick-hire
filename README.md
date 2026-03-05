@@ -118,7 +118,7 @@ quick-hire/
 | `DATABASE_URL`         | MongoDB connection string | `mongodb+srv://user:pass@cluster/db`   |
 | `CORS_ORIGIN`          | Frontend URL for CORS     | `http://localhost:3001`                |
 | `JWT_SECRET`           | Secret for JWT tokens     | Generate with: `openssl rand -base64 32` |
-| `NEXT_PUBLIC_SERVER_URL` | Backend API URL         | `http://localhost:3000`                |
+| `NEXT_PUBLIC_API_URL`  | Backend API URL           | `http://localhost:3000`                |
 
 ## 🛠 Available Scripts
 
