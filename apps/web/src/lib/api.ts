@@ -12,17 +12,15 @@ export interface Job {
   logo?: string;
 }
 
-async function fetchWithRetry(url: string, options?: RequestInit) {
-  for (let i = 0; i < 3; i++) {
+async function fetchWithRetry(url: string, options?: RequestInit, retries = 10) {
+  for (let i = 0; i < retries; i++) {
     try {
       const res = await fetch(url, { ...options, cache: "no-store" });
       if (res.ok) return res;
-      // Don't retry client errors
-      if (res.status < 500) break;
     } catch {
-      // Network error - retry
+      // Retry on any error
     }
-    if (i < 2) await new Promise((r) => setTimeout(r, 1000 * (i + 1)));
+    await new Promise((r) => setTimeout(r, 5000));
   }
   throw new Error("Failed to fetch");
 }

@@ -29,7 +29,7 @@ export default function HomePage() {
         setLatestJobs(data.latestJobs);
       } catch (error) {
         console.error("Failed to fetch data:", error);
-        toast.error("Failed to load jobs. Please try refreshing.");
+        toast.error("Failed to load jobs. The server is on free tier and needs time to warm up - Please try refreshing.");
       } finally {
         setLoading(false);
       }
