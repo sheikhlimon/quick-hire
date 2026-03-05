@@ -135,15 +135,16 @@
   --radius-4xl: calc(var(--radius) + 16px);
 }
 
+html {
+  font-family: "Epilogue", sans-serif;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply font-epilogue bg-background text-foreground;
-  }
-  html {
-    @apply font-epilogue;
+    @apply bg-background text-foreground;
   }
 }
 
