@@ -24,6 +24,7 @@ export default function JobDetailPage() {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const [formData, setFormData] = useState({
     name: "",
@@ -53,6 +54,7 @@ export default function JobDetailPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
+    setErrors({});
 
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/applications`, {
@@ -71,10 +73,13 @@ export default function JobDetailPage() {
         setFormData({ name: "", email: "", resumeLink: "", coverNote: "" });
         setShowForm(false);
       } else {
-        // Show detailed error message
+        // Show detailed error message inline
         if (data.errors && data.errors.length > 0) {
-          const errorMessages = data.errors.map((e: { message: string }) => e.message).join(", ");
-          toast.error(`Validation errors: ${errorMessages}`);
+          const errorMap: Record<string, string> = {};
+          data.errors.forEach((e: { field: string; message: string }) => {
+            errorMap[e.field] = e.message;
+          });
+          setErrors(errorMap);
         } else {
           toast.error(data.message || "Failed to submit application");
         }
@@ -85,6 +90,22 @@ export default function JobDetailPage() {
     } finally {
       setSubmitting(false);
     }
+  };
+
+  const handleChange = (field: string, value: string) => {
+    setFormData({ ...formData, [field]: value });
+    // Clear error for this field when user starts typing
+    if (errors[field]) {
+      setErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors[field];
+        return newErrors;
+      });
+    }
+  };
+
+  const getErrorClass = (fieldName: string) => {
+    return errors[fieldName] ? "border-red-500 focus:border-red-500 focus:ring-red-500" : "";
   };
 
   if (loading) {
@@ -196,9 +217,12 @@ export default function JobDetailPage() {
                   type="text"
                   required
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none"
+                  onChange={(e) => handleChange("name", e.target.value)}
+                  className={`w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none ${getErrorClass("name")}`}
                 />
+                {errors.name && (
+                  <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+                )}
               </div>
 
               <div>
@@ -209,9 +233,12 @@ export default function JobDetailPage() {
                   type="email"
                   required
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none"
+                  onChange={(e) => handleChange("email", e.target.value)}
+                  className={`w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none ${getErrorClass("email")}`}
                 />
+                {errors.email && (
+                  <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                )}
               </div>
 
               <div>
@@ -223,9 +250,15 @@ export default function JobDetailPage() {
                   required
                   placeholder="https://drive.google.com/..."
                   value={formData.resumeLink}
-                  onChange={(e) => setFormData({ ...formData, resumeLink: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none"
+                  onChange={(e) => handleChange("resumeLink", e.target.value)}
+                  className={`w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none ${getErrorClass("resumeLink")}`}
                 />
+                {!errors.resumeLink && (
+                  <p className="mt-1 text-xs text-gray-500">Must be a valid URL (e.g., Google Drive, LinkedIn)</p>
+                )}
+                {errors.resumeLink && (
+                  <p className="mt-1 text-sm text-red-600">{errors.resumeLink}</p>
+                )}
               </div>
 
               <div>
@@ -235,7 +268,7 @@ export default function JobDetailPage() {
                 <textarea
                   rows={4}
                   value={formData.coverNote}
-                  onChange={(e) => setFormData({ ...formData, coverNote: e.target.value })}
+                  onChange={(e) => handleChange("coverNote", e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none resize-y"
                   placeholder="Tell us why you're a great fit..."
                 />

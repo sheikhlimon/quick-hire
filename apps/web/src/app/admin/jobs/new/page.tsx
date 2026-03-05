@@ -13,6 +13,7 @@ export default function NewJobPage() {
   const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState({
     title: "",
     company: "QuickHire Inc.",
@@ -26,11 +27,20 @@ export default function NewJobPage() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear error for this field when user starts typing
+    if (errors[name]) {
+      setErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
+      });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setErrors({});
 
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/jobs`, {
@@ -44,7 +54,16 @@ export default function NewJobPage() {
         router.push("/admin/jobs");
       } else {
         const data = await res.json();
-        toast.error(data.message || "Failed to create job");
+        // Handle validation errors
+        if (data.errors && data.errors.length > 0) {
+          const errorMap: Record<string, string> = {};
+          data.errors.forEach((e: { field: string; message: string }) => {
+            errorMap[e.field] = e.message;
+          });
+          setErrors(errorMap);
+        } else {
+          toast.error(data.message || "Failed to create job");
+        }
       }
     } catch (error) {
       console.error("Failed to create job:", error);
@@ -52,6 +71,10 @@ export default function NewJobPage() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const getErrorClass = (fieldName: string) => {
+    return errors[fieldName] ? "border-red-500 focus:border-red-500 focus:ring-red-500" : "";
   };
 
   return (
@@ -86,8 +109,11 @@ export default function NewJobPage() {
                   onChange={handleChange}
                   required
                   placeholder="e.g. Senior Frontend Developer"
-                  className="w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none"
+                  className={`w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none ${getErrorClass("title")}`}
                 />
+                {errors.title && (
+                  <p className="mt-1 text-sm text-red-600">{errors.title}</p>
+                )}
               </div>
 
               {/* Company */}
@@ -102,8 +128,11 @@ export default function NewJobPage() {
                   onChange={handleChange}
                   required
                   placeholder="e.g. QuickHire Inc."
-                  className="w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none"
+                  className={`w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none ${getErrorClass("company")}`}
                 />
+                {errors.company && (
+                  <p className="mt-1 text-sm text-red-600">{errors.company}</p>
+                )}
               </div>
 
               {/* Location */}
@@ -118,8 +147,11 @@ export default function NewJobPage() {
                   onChange={handleChange}
                   required
                   placeholder="e.g. San Francisco, CA or Remote"
-                  className="w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none"
+                  className={`w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none ${getErrorClass("location")}`}
                 />
+                {errors.location && (
+                  <p className="mt-1 text-sm text-red-600">{errors.location}</p>
+                )}
               </div>
 
               {/* Type & Category */}
@@ -133,7 +165,7 @@ export default function NewJobPage() {
                     value={formData.type}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none"
+                    className={`w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none ${getErrorClass("type")}`}
                   >
                     {JOB_TYPES.map((type) => (
                       <option key={type} value={type}>
@@ -141,6 +173,9 @@ export default function NewJobPage() {
                       </option>
                     ))}
                   </select>
+                  {errors.type && (
+                    <p className="mt-1 text-sm text-red-600">{errors.type}</p>
+                  )}
                 </div>
 
                 <div>
@@ -152,7 +187,7 @@ export default function NewJobPage() {
                     value={formData.category}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none"
+                    className={`w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none ${getErrorClass("category")}`}
                   >
                     {CATEGORIES.map((cat) => (
                       <option key={cat} value={cat}>
@@ -160,6 +195,9 @@ export default function NewJobPage() {
                       </option>
                     ))}
                   </select>
+                  {errors.category && (
+                    <p className="mt-1 text-sm text-red-600">{errors.category}</p>
+                  )}
                 </div>
               </div>
 
@@ -174,8 +212,11 @@ export default function NewJobPage() {
                   value={formData.salary}
                   onChange={handleChange}
                   placeholder="e.g. $80,000 - $120,000"
-                  className="w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none"
+                  className={`w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none ${getErrorClass("salary")}`}
                 />
+                {errors.salary && (
+                  <p className="mt-1 text-sm text-red-600">{errors.salary}</p>
+                )}
               </div>
 
               {/* Description */}
@@ -190,8 +231,14 @@ export default function NewJobPage() {
                   required
                   rows={6}
                   placeholder="Describe the role, responsibilities, requirements..."
-                  className="w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none resize-y"
+                  className={`w-full px-3 py-2 border border-gray-300 focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none resize-y ${getErrorClass("description")}`}
                 />
+                {!errors.description && (
+                  <p className="mt-1 text-xs text-gray-500">Must be at least 10 characters</p>
+                )}
+                {errors.description && (
+                  <p className="mt-1 text-sm text-red-600">{errors.description}</p>
+                )}
               </div>
 
               {/* Actions */}
