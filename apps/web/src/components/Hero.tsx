@@ -10,10 +10,12 @@ export function Hero() {
   const router = useRouter();
 
   const handleSearch = () => {
+    if (!jobQuery && !locationQuery) return;
     const params = new URLSearchParams();
     if (jobQuery) params.append("q", jobQuery);
     if (locationQuery) params.append("location", locationQuery);
-    router.push(`/jobs?${params.toString()}`);
+    const queryString = params.toString();
+    router.push(`/jobs?${queryString}`);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
