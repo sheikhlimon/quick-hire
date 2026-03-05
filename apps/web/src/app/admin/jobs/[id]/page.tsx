@@ -231,27 +231,27 @@ export default function JobDetailPage() {
                 ) : (
                   applications.map((app) => (
                     <div key={app.id} className="p-4">
-                      <div className="flex items-start justify-between mb-3">
-                        <div>
+                      <div className="flex gap-4">
+                        <div className="flex-1">
                           <h3 className="font-medium text-gray-900">{app.name}</h3>
                           <p className="text-sm text-gray-500">{app.email}</p>
+                          {app.coverNote && (
+                            <p className="text-sm text-gray-600 mt-2 line-clamp-2">{app.coverNote}</p>
+                          )}
                         </div>
-                        <p className="text-sm font-epilogue text-gray-500">
-                          {new Date(app.createdAt).toLocaleDateString()}
-                        </p>
-                      </div>
-                      {app.coverNote && (
-                        <p className="text-sm text-gray-600 mb-3 line-clamp-2">{app.coverNote}</p>
-                      )}
-                      <div className="flex justify-end">
-                        <a
-                          href={app.resumeLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex text-sm px-3 py-1 border border-brand-primary text-brand-primary font-medium hover:bg-brand-primary/10 transition-colors cursor-pointer"
-                        >
-                          View Resume
-                        </a>
+                        <div className="flex flex-col justify-between items-end flex-shrink-0 py-1">
+                          <p className="text-sm font-epilogue text-gray-500">
+                            {new Date(app.createdAt).toLocaleDateString()}
+                          </p>
+                          <a
+                            href={app.resumeLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex text-sm px-3 py-1 border border-brand-primary text-brand-primary font-medium hover:bg-brand-primary/10 transition-colors cursor-pointer"
+                          >
+                            View Resume
+                          </a>
+                        </div>
                       </div>
                     </div>
                   ))

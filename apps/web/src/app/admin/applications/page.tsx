@@ -87,39 +87,39 @@ export default function ApplicationsPage() {
             <div className="bg-white border border-gray-200 divide-y divide-gray-200">
               {applications.map((app) => (
                 <div key={app.id} className="p-4 hover:bg-gray-50">
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex items-start gap-3">
+                  <div className="flex gap-4">
+                    <div className="flex items-start gap-3 flex-1">
                       <div className="w-10 h-10 bg-brand-primary/10 flex items-center justify-center flex-shrink-0">
                         <span className="text-brand-primary font-semibold">
                           {app.name.charAt(0).toUpperCase()}
                         </span>
                       </div>
-                      <div>
+                      <div className="flex-1">
                         <h3 className="font-semibold text-gray-900">{app.name}</h3>
                         <p className="font-clash-display text-sm text-gray-500">{app.email}</p>
+                        <p className="text-sm text-gray-600 mb-1">
+                          Applied for: {getJobTitle(app.jobId)}
+                        </p>
+                        {app.coverNote && (
+                          <p className="text-sm text-gray-600 line-clamp-2 italic">
+                            "{app.coverNote}"
+                          </p>
+                        )}
                       </div>
                     </div>
-                    <p className="text-sm font-epilogue text-gray-500 whitespace-nowrap">
-                      {new Date(app.createdAt).toLocaleDateString()}
-                    </p>
-                  </div>
-                  <p className="text-sm text-gray-600 mb-1">
-                    Applied for: {getJobTitle(app.jobId)}
-                  </p>
-                  {app.coverNote && (
-                    <p className="text-sm text-gray-600 mb-3 line-clamp-2 italic">
-                      "{app.coverNote}"
-                    </p>
-                  )}
-                  <div className="flex justify-end">
-                    <a
-                      href={app.resumeLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex text-sm px-3 py-1 border border-brand-primary text-brand-primary font-medium hover:bg-brand-primary/10 transition-colors cursor-pointer"
-                    >
-                      View Resume
-                    </a>
+                    <div className="flex flex-col justify-between items-end flex-shrink-0 py-1">
+                      <p className="text-sm font-epilogue text-gray-500 whitespace-nowrap">
+                        {new Date(app.createdAt).toLocaleDateString()}
+                      </p>
+                      <a
+                        href={app.resumeLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex text-sm px-3 py-1 border border-brand-primary text-brand-primary font-medium hover:bg-brand-primary/10 transition-colors cursor-pointer"
+                      >
+                        View Resume
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))}
