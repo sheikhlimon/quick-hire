@@ -4,8 +4,8 @@ A modern job board application built with Next.js and Express, allowing users to
 
 ## 🚀 Live Demo
 
-- **Frontend**: [Coming Soon]
-- **Backend**: [Coming Soon]
+- **Frontend**: https://quick-hire-web-delta.vercel.app
+- **Backend**: https://quick-hire-dr7g.onrender.com
 
 ## 🛠 Tech Stack
 
@@ -53,12 +53,14 @@ quick-hire/
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <your-repo-url>
    cd quick-hire
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
@@ -66,6 +68,7 @@ quick-hire/
 3. **Setup environment files**
 
    Backend (apps/server/.env):
+
    ```bash
    cp apps/server/.env.example apps/server/.env
    # Then generate JWT secret:
@@ -73,17 +76,20 @@ quick-hire/
    ```
 
    Frontend (apps/web/.env):
+
    ```bash
    cp apps/web/.env.example apps/web/.env
    ```
 
 4. **Run database migrations**
+
    ```bash
    npm run db:generate
    npm run db:push
    ```
 
 5. **Start development servers**
+
    ```bash
    npm run dev
    ```
@@ -113,12 +119,12 @@ quick-hire/
 
 ## 📝 Environment Variables
 
-| Variable               | Description               | Example                                |
-|------------------------|---------------------------|----------------------------------------|
-| `DATABASE_URL`         | MongoDB connection string | `mongodb+srv://user:pass@cluster/db`   |
-| `CORS_ORIGIN`          | Frontend URL for CORS     | `http://localhost:3001`                |
-| `JWT_SECRET`           | Secret for JWT tokens     | Generate with: `openssl rand -base64 32` |
-| `NEXT_PUBLIC_API_URL`  | Backend API URL           | `http://localhost:3000`                |
+| Variable              | Description               | Example                                  |
+| --------------------- | ------------------------- | ---------------------------------------- |
+| `DATABASE_URL`        | MongoDB connection string | `mongodb+srv://user:pass@cluster/db`     |
+| `CORS_ORIGIN`         | Frontend URL for CORS     | `http://localhost:3001`                  |
+| `JWT_SECRET`          | Secret for JWT tokens     | Generate with: `openssl rand -base64 32` |
+| `NEXT_PUBLIC_API_URL` | Backend API URL           | `http://localhost:3000`                  |
 
 ## 🛠 Available Scripts
 
