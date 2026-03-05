@@ -246,14 +246,14 @@ export default function NewJobPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="bg-brand-primary text-white px-6 py-2 font-medium text-sm hover:bg-brand-primary/90 transition-colors disabled:opacity-50"
+                  className="bg-brand-primary text-white px-6 py-2 font-medium text-sm hover:bg-brand-primary/90 transition-colors disabled:opacity-50 cursor-pointer"
                 >
                   {loading ? "Creating..." : "Create Job"}
                 </button>
                 <button
                   type="button"
                   onClick={() => router.push("/admin/jobs")}
-                  className="border border-gray-300 text-gray-700 px-6 py-2 font-medium text-sm hover:bg-gray-50 transition-colors"
+                  className="border border-gray-300 text-gray-700 px-6 py-2 font-medium text-sm hover:bg-gray-50 transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
