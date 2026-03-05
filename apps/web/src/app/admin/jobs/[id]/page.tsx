@@ -231,28 +231,26 @@ export default function JobDetailPage() {
                 ) : (
                   applications.map((app) => (
                     <div key={app.id} className="p-4">
-                      <div className="flex items-start justify-between">
+                      <div className="flex items-start justify-between mb-3">
                         <div>
                           <h3 className="font-medium text-gray-900">{app.name}</h3>
                           <p className="text-sm text-gray-500">{app.email}</p>
-                          {app.coverNote && (
-                            <p className="text-sm text-gray-600 mt-2 line-clamp-2">{app.coverNote}</p>
-                          )}
                         </div>
-                        <div className="text-right">
-                          <a
-                            href={app.resumeLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sm text-brand-primary font-medium hover:underline"
-                          >
-                            View Resume
-                          </a>
-                          <p className="text-xs text-gray-400 mt-1">
-                            {new Date(app.createdAt).toLocaleDateString()}
-                          </p>
-                        </div>
+                        <p className="text-xs text-gray-400">
+                          {new Date(app.createdAt).toLocaleDateString()}
+                        </p>
                       </div>
+                      {app.coverNote && (
+                        <p className="text-sm text-gray-600 mb-3 line-clamp-2">{app.coverNote}</p>
+                      )}
+                      <a
+                        href={app.resumeLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex text-sm px-3 py-1 border border-brand-primary text-brand-primary font-medium hover:bg-brand-primary/10 transition-colors cursor-pointer"
+                      >
+                        View Resume
+                      </a>
                     </div>
                   ))
                 )}
