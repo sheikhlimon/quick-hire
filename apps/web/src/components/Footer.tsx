@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Facebook,
   Instagram,
@@ -15,9 +16,13 @@ export function Footer() {
           {/* Logo & Description - Full width on mobile, first column on desktop */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center">
-                <span className="text-white font-bold text-xl">Q</span>
-              </div>
+              <Image
+                src="/assets/logo.png"
+                alt="QuickHire"
+                width={40}
+                height={40}
+                className="w-10 h-10"
+              />
               <span className="text-white font-semibold text-xl">QuickHire</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
