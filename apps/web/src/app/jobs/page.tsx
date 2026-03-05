@@ -19,11 +19,14 @@ function JobsContent() {
   useEffect(() => {
     fetchJobs();
 
-    // Read category from URL params
+    // Read search parameters from URL
+    const qFromUrl = searchParams.get("q");
+    const locationFromUrl = searchParams.get("location");
     const categoryFromUrl = searchParams.get("category");
-    if (categoryFromUrl) {
-      setSelectedCategory(categoryFromUrl);
-    }
+
+    if (qFromUrl) setSearchQuery(qFromUrl);
+    if (locationFromUrl) setSelectedLocation(locationFromUrl);
+    if (categoryFromUrl) setSelectedCategory(categoryFromUrl);
   }, [searchParams]);
 
   const fetchJobs = async () => {

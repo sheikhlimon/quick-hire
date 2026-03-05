@@ -177,6 +177,9 @@ const sampleJobs = [
 
 async function seed() {
   try {
+    // Clear existing applications first (foreign key constraint)
+    await prisma.application.deleteMany({});
+
     // Clear existing jobs
     await prisma.job.deleteMany({});
 

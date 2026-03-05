@@ -1,6 +1,27 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export function Hero() {
+  const [jobQuery, setJobQuery] = useState("");
+  const [locationQuery, setLocationQuery] = useState("");
+  const router = useRouter();
+
+  const handleSearch = () => {
+    const params = new URLSearchParams();
+    if (jobQuery) params.append("q", jobQuery);
+    if (locationQuery) params.append("location", locationQuery);
+    router.push(`/jobs?${params.toString()}`);
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
     <section className="bg-hero-bg w-full min-h-[600px] md:min-h-[700px] lg:min-h-screen relative overflow-hidden">
       {/* Content */}
@@ -44,10 +65,13 @@ export function Hero() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
                 <input
-                  type="text"
-                  placeholder="Job title or keyword"
-                  className="font-epilogue font-normal text-sm text-gray-700 flex-1 min-w-0 outline-none placeholder:text-gray-400 pb-1 border-b border-gray-300"
-                />
+                    type="text"
+                    placeholder="Job title or keyword"
+                    value={jobQuery}
+                    onChange={(e) => setJobQuery(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    className="font-epilogue font-normal text-sm text-gray-700 flex-1 min-w-0 outline-none placeholder:text-gray-400 pb-1 border-b border-gray-300"
+                  />
               </div>
 
               {/* Location input */}
@@ -57,14 +81,20 @@ export function Hero() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <input
-                  type="text"
-                  placeholder="Florence, Italy"
-                  className="font-epilogue font-normal text-sm text-gray-700 flex-1 min-w-0 outline-none placeholder:text-gray-400"
-                />
+                    type="text"
+                    placeholder="Florence, Italy"
+                    value={locationQuery}
+                    onChange={(e) => setLocationQuery(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    className="font-epilogue font-normal text-sm text-gray-700 flex-1 min-w-0 outline-none placeholder:text-gray-400"
+                  />
               </div>
 
               {/* Search button */}
-              <button className="font-epilogue bg-brand-primary text-white px-5 py-3 font-medium text-base w-full">
+              <button 
+                onClick={handleSearch}
+                className="font-epilogue bg-brand-primary text-white px-5 py-3 font-medium text-base w-full hover:opacity-90 transition-opacity"
+              >
                 Search my job
               </button>
             </div>
@@ -77,10 +107,13 @@ export function Hero() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
                 <input
-                  type="text"
-                  placeholder="Job title or keyword"
-                  className="font-epilogue font-normal text-sm text-gray-700 flex-1 min-w-0 outline-none placeholder:text-gray-400 pb-1 border-b border-gray-300"
-                />
+                   type="text"
+                   placeholder="Job title or keyword"
+                   value={jobQuery}
+                   onChange={(e) => setJobQuery(e.target.value)}
+                   onKeyPress={handleKeyPress}
+                   className="font-epilogue font-normal text-sm text-gray-700 flex-1 min-w-0 outline-none placeholder:text-gray-400 pb-1 border-b border-gray-300"
+                 />
               </div>
 
               {/* Divider */}
@@ -93,17 +126,23 @@ export function Hero() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <input
-                  type="text"
-                  placeholder="Florence, Italy"
-                  className="font-epilogue font-normal text-sm text-gray-700 flex-1 min-w-0 outline-none placeholder:text-gray-400 pb-1 border-b border-gray-300"
-                />
+                   type="text"
+                   placeholder="Florence, Italy"
+                   value={locationQuery}
+                   onChange={(e) => setLocationQuery(e.target.value)}
+                   onKeyPress={handleKeyPress}
+                   className="font-epilogue font-normal text-sm text-gray-700 flex-1 min-w-0 outline-none placeholder:text-gray-400 pb-1 border-b border-gray-300"
+                 />
                 <svg className="w-3 h-3 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
 
               {/* Search button */}
-              <button className="font-epilogue bg-brand-primary text-white px-5 py-2 font-medium text-sm whitespace-nowrap flex-shrink-0">
+              <button 
+                onClick={handleSearch}
+                className="font-epilogue bg-brand-primary text-white px-5 py-2 font-medium text-sm whitespace-nowrap flex-shrink-0 hover:opacity-90 transition-opacity"
+              >
                 Search my job
               </button>
             </div>
