@@ -99,7 +99,7 @@ export default function ApplicationsPage() {
                         <p className="font-clash-display text-sm text-gray-500">{app.email}</p>
                       </div>
                     </div>
-                    <p className="text-xs text-gray-400 whitespace-nowrap">
+                    <p className="text-sm font-epilogue text-gray-500 whitespace-nowrap">
                       {new Date(app.createdAt).toLocaleDateString()}
                     </p>
                   </div>

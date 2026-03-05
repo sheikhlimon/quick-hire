@@ -236,7 +236,7 @@ export default function JobDetailPage() {
                           <h3 className="font-medium text-gray-900">{app.name}</h3>
                           <p className="text-sm text-gray-500">{app.email}</p>
                         </div>
-                        <p className="text-xs text-gray-400">
+                        <p className="text-sm font-epilogue text-gray-500">
                           {new Date(app.createdAt).toLocaleDateString()}
                         </p>
                       </div>
