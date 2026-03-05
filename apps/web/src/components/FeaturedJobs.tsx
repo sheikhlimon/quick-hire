@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import type { Job } from "@/lib/api";
 import { JobCard } from "./JobCard";
@@ -10,72 +9,6 @@ interface FeaturedJobsProps {
 }
 
 export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [isPaused, setIsPaused] = useState(false);
-
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    let animationId: number;
-    let scrollDirection = 1;
-    let lastTime = performance.now();
-    const scrollSpeed = 30; // pixels per second
-
-    const autoScroll = (currentTime: number) => {
-      if (!isPaused && scrollContainer) {
-        const deltaTime = (currentTime - lastTime) / 1000; // Convert to seconds
-        lastTime = currentTime;
-
-        const scrollAmount = scrollSpeed * deltaTime;
-        scrollContainer.scrollLeft += scrollAmount * scrollDirection;
-
-        // Reverse direction at the ends
-        const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-        if (scrollContainer.scrollLeft >= maxScroll - 1) {
-          scrollDirection = -1;
-        } else if (scrollContainer.scrollLeft <= 0) {
-          scrollDirection = 1;
-        }
-      } else {
-        lastTime = currentTime;
-      }
-      animationId = requestAnimationFrame(autoScroll);
-    };
-
-    animationId = requestAnimationFrame(autoScroll);
-
-    // Touch handlers for mobile
-    const handleTouchStart = () => setIsPaused(true);
-    const handleTouchMove = () => {
-      // Allow manual scrolling
-    };
-    const handleTouchEnd = () => {
-      setTimeout(() => setIsPaused(false), 2000);
-    };
-
-    // Mouse handlers for desktop testing
-    const handleMouseDown = () => setIsPaused(true);
-    const handleMouseUp = () => setTimeout(() => setIsPaused(false), 2000);
-    const handleMouseLeave = () => setTimeout(() => setIsPaused(false), 2000);
-
-    scrollContainer.addEventListener("touchstart", handleTouchStart);
-    scrollContainer.addEventListener("touchmove", handleTouchMove);
-    scrollContainer.addEventListener("touchend", handleTouchEnd);
-    scrollContainer.addEventListener("mousedown", handleMouseDown);
-    scrollContainer.addEventListener("mouseup", handleMouseUp);
-    scrollContainer.addEventListener("mouseleave", handleMouseLeave);
-
-    return () => {
-      cancelAnimationFrame(animationId);
-      scrollContainer.removeEventListener("touchstart", handleTouchStart);
-      scrollContainer.removeEventListener("touchmove", handleTouchMove);
-      scrollContainer.removeEventListener("touchend", handleTouchEnd);
-      scrollContainer.removeEventListener("mousedown", handleMouseDown);
-      scrollContainer.removeEventListener("mouseup", handleMouseUp);
-      scrollContainer.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, [isPaused]);
 
   return (
     <section className="py-16 bg-white">
@@ -98,7 +31,6 @@ export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
         {/* Mobile: Horizontal scroll carousel */}
         <div className="md:hidden">
           <div
-            ref={scrollRef}
             className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory"
             style={{
               scrollBehavior: "smooth",
