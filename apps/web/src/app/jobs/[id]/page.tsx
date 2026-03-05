@@ -285,7 +285,7 @@ export default function JobDetailPage() {
                 <button
                   type="button"
                   onClick={() => setShowForm(false)}
-                  className="border border-gray-300 text-gray-700 px-6 py-2 font-medium text-sm hover:bg-gray-50 transition-colors"
+                  className="border border-gray-300 text-gray-700 px-6 py-2 font-medium text-sm hover:bg-gray-50 transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>

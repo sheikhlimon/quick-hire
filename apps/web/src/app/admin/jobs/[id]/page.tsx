@@ -7,6 +7,7 @@ import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 import { TrashIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
+import { useExpandableCoverNotes } from "@/hooks/useExpandableCoverNotes";
 
 interface Job {
   id: string;
@@ -37,6 +38,7 @@ export default function JobDetailPage() {
   const [applications, setApplications] = useState<Application[]>([]);
   const [loading, setLoading] = useState(true);
   const [showApplications, setShowApplications] = useState(true);
+  const { toggleCoverNote, isExpanded } = useExpandableCoverNotes();
 
   useEffect(() => {
     if (params.id) {
@@ -236,7 +238,19 @@ export default function JobDetailPage() {
                           <h3 className="font-medium text-gray-900">{app.name}</h3>
                           <p className="text-sm text-gray-500">{app.email}</p>
                           {app.coverNote && (
-                            <p className="text-sm text-gray-600 mt-2 line-clamp-2">{app.coverNote}</p>
+                            <div className="text-sm text-gray-600">
+                              <p className={isExpanded(app.id) ? "" : "line-clamp-2 italic"}>
+                                "{app.coverNote}"
+                              </p>
+                              <div className="flex justify-start mt-1">
+                                <button
+                                  onClick={() => toggleCoverNote(app.id)}
+                                  className="text-brand-primary font-medium hover:underline text-xs cursor-pointer"
+                                >
+                                  {isExpanded(app.id) ? "View less" : "View more"}
+                                </button>
+                              </div>
+                            </div>
                           )}
                         </div>
                         <div className="flex flex-col justify-between items-end flex-shrink-0 py-1">

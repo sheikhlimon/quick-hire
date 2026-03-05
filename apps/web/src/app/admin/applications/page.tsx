@@ -3,6 +3,7 @@
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
 import { AdminHeader } from "@/components/admin/AdminHeader";
 import { useState, useEffect } from "react";
+import { useExpandableCoverNotes } from "@/hooks/useExpandableCoverNotes";
 
 interface Application {
   id: string;
@@ -26,6 +27,7 @@ export default function ApplicationsPage() {
   const [applications, setApplications] = useState<Application[]>([]);
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(true);
+  const { toggleCoverNote, isExpanded } = useExpandableCoverNotes();
 
   useEffect(() => {
     fetchApplications();
@@ -101,9 +103,19 @@ export default function ApplicationsPage() {
                           Applied for: {getJobTitle(app.jobId)}
                         </p>
                         {app.coverNote && (
-                          <p className="text-sm text-gray-600 line-clamp-2 italic">
-                            "{app.coverNote}"
-                          </p>
+                          <div className="text-sm text-gray-600">
+                            <p className={isExpanded(app.id) ? "" : "line-clamp-2 italic"}>
+                              "{app.coverNote}"
+                            </p>
+                            <div className="flex justify-start mt-1">
+                              <button
+                                onClick={() => toggleCoverNote(app.id)}
+                                className="text-brand-primary font-medium hover:underline text-xs cursor-pointer"
+                              >
+                                {isExpanded(app.id) ? "View less" : "View more"}
+                              </button>
+                            </div>
+                          </div>
                         )}
                       </div>
                     </div>
