@@ -58,8 +58,8 @@ export default function AdminPage() {
           <div className="grid grid-cols-2 gap-4 mb-6">
             {statCards.map((stat) => (
               <div key={stat.label} className={`${stat.color} p-4`}>
-                <p className="text-sm font-medium opacity-80">{stat.label}</p>
-                <p className="text-2xl font-semibold mt-1">{stat.value}</p>
+                <p className="text-sm font-clash-display font-medium opacity-80">{stat.label}</p>
+                <p className="text-2xl font-clash-display font-semibold mt-1">{stat.value}</p>
               </div>
             ))}
           </div>
