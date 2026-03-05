@@ -97,7 +97,7 @@ export default function ApplicationsPage() {
                       <div className="flex-1">
                         <h3 className="font-semibold text-gray-900">{app.name}</h3>
                         <p className="font-clash-display text-sm text-gray-500">{app.email}</p>
-                        <p className="text-sm text-gray-600 mb-1">
+                        <p className="text-sm text-gray-600 mb-1 whitespace-nowrap">
                           Applied for: {getJobTitle(app.jobId)}
                         </p>
                         {app.coverNote && (

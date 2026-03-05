@@ -146,7 +146,7 @@ export default function AdminJobsPage() {
                         <h3 className="font-semibold text-gray-900">{job.title}</h3>
                         <p className="text-sm text-gray-500">{job.company}</p>
                       </div>
-                      <span className="text-xs px-2 py-1 bg-brand-primary/10 text-brand-primary font-medium">
+                      <span className="text-xs px-2 py-1 bg-brand-primary/10 text-brand-primary font-medium whitespace-nowrap">
                         {job.type}
                       </span>
                     </div>
@@ -197,7 +197,7 @@ export default function AdminJobsPage() {
                         <td className="px-6 py-4 text-gray-600">{job.company}</td>
                         <td className="px-6 py-4 text-gray-600">{job.location}</td>
                         <td className="px-6 py-4">
-                          <span className="text-xs px-2 py-1 bg-brand-primary/10 text-brand-primary font-medium">
+                          <span className="text-xs px-2 py-1 bg-brand-primary/10 text-brand-primary font-medium whitespace-nowrap">
                             {job.type}
                           </span>
                         </td>
