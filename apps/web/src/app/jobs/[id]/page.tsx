@@ -278,7 +278,7 @@ export default function JobDetailPage() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="bg-brand-primary text-white px-6 py-2 font-medium text-sm hover:bg-brand-primary/90 transition-colors disabled:opacity-50"
+                  className="bg-brand-primary text-white px-6 py-2 font-medium text-sm hover:bg-brand-primary/90 transition-colors disabled:opacity-50 cursor-pointer"
                 >
                   {submitting ? "Submitting..." : "Submit Application"}
                 </button>
@@ -299,7 +299,7 @@ export default function JobDetailPage() {
               <p className="font-clash-display text-gray-500 mb-6">Apply now and join our team!</p>
               <button
                 onClick={() => setShowForm(true)}
-                className="bg-brand-primary text-white px-8 py-3 font-medium text-sm hover:bg-brand-primary/90 transition-colors"
+                className="bg-brand-primary text-white px-8 py-3 font-medium text-sm hover:bg-brand-primary/90 transition-colors cursor-pointer"
               >
                 Apply Now
               </button>

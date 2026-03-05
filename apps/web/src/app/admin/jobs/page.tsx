@@ -53,7 +53,7 @@ export default function AdminJobsPage() {
                     toast.dismiss(t.id);
                     resolve(false);
                   }}
-                  className="px-3 py-1 text-sm bg-gray-200 hover:bg-gray-300 rounded"
+                  className="px-3 py-1 text-sm bg-gray-200 hover:bg-gray-300 rounded cursor-pointer"
                 >
                   Cancel
                 </button>
@@ -62,7 +62,7 @@ export default function AdminJobsPage() {
                     toast.dismiss(t.id);
                     resolve(true);
                   }}
-                  className="px-3 py-1 text-sm bg-red-600 text-white hover:bg-red-700 rounded"
+                  className="px-3 py-1 text-sm bg-red-600 text-white hover:bg-red-700 rounded cursor-pointer"
                 >
                   Delete
                 </button>
@@ -165,7 +165,7 @@ export default function AdminJobsPage() {
                       </Link>
                       <button
                         onClick={() => handleDelete(job.id)}
-                        className="p-2 text-gray-500 hover:text-red-600"
+                        className="p-2 text-gray-500 hover:text-red-600 cursor-pointer"
                         title="Delete"
                       >
                         <TrashIcon className="w-4 h-4" />
@@ -213,7 +213,7 @@ export default function AdminJobsPage() {
                             </Link>
                             <button
                               onClick={() => handleDelete(job.id)}
-                              className="p-2 text-gray-500 hover:text-red-600"
+                              className="p-2 text-gray-500 hover:text-red-600 cursor-pointer"
                               title="Delete"
                             >
                               <TrashIcon className="w-4 h-4" />

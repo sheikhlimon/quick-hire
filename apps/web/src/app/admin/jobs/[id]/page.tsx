@@ -81,7 +81,7 @@ export default function JobDetailPage() {
                     toast.dismiss(t.id);
                     resolve(false);
                   }}
-                  className="px-3 py-1 text-sm bg-gray-200 hover:bg-gray-300 rounded"
+                  className="px-3 py-1 text-sm bg-gray-200 hover:bg-gray-300 rounded cursor-pointer"
                 >
                   Cancel
                 </button>
@@ -90,7 +90,7 @@ export default function JobDetailPage() {
                     toast.dismiss(t.id);
                     resolve(true);
                   }}
-                  className="px-3 py-1 text-sm bg-red-600 text-white hover:bg-red-700 rounded"
+                  className="px-3 py-1 text-sm bg-red-600 text-white hover:bg-red-700 rounded cursor-pointer"
                 >
                   Delete
                 </button>
@@ -178,7 +178,7 @@ export default function JobDetailPage() {
             <div className="flex items-center gap-2">
               <button
                 onClick={handleDelete}
-                className="inline-flex items-center gap-2 border border-red-300 text-red-600 px-4 py-2 font-medium text-sm hover:bg-red-50 transition-colors"
+                className="inline-flex items-center gap-2 border border-red-300 text-red-600 px-4 py-2 font-medium text-sm hover:bg-red-50 transition-colors cursor-pointer"
               >
                 <TrashIcon className="w-4 h-4" />
                 Delete
