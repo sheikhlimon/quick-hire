@@ -60,14 +60,15 @@ export function CategoriesSection({ categories = [] }: CategoriesSectionProps) {
                 className="group/card relative border border-gray-200 hover:bg-brand-primary hover:border-brand-primary transition-all duration-300"
               >
                 {/* Mobile: Horizontal card */}
-                <div className="md:hidden flex items-center p-4 h-[70px]">
+                <div className="md:hidden flex items-center p-4 gap-3">
                   <Icon className="w-6 h-6 shrink-0 text-[#6C5CE7] group-hover/card:text-white transition-colors" />
-                  <div className="flex-1 flex items-center justify-between ml-3">
+                  <div className="flex-1">
                     <h3 className="font-clash-display font-semibold text-base text-text-primary group-hover/card:text-white transition-colors">
                       {category.name}
                     </h3>
-                    <span className="text-sm text-text-secondary group-hover/card:text-white transition-colors">{category.jobs} jobs</span>
+                    <span className="text-sm text-text-secondary group-hover/card:text-white transition-colors">{category.jobs} jobs available</span>
                   </div>
+                  <ChevronRightIcon className="w-5 h-5 text-gray-400 group-hover/card:text-white transition-colors shrink-0" />
                 </div>
 
                 {/* Desktop: Vertical card */}
