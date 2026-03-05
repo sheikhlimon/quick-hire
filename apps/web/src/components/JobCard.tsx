@@ -23,7 +23,7 @@ export function JobCard({ job }: JobCardProps) {
 
   return (
     <Link href={`/jobs/${job.id}`}>
-      <div className="group bg-white border border-gray-200 p-6 hover:bg-brand-primary hover:border-brand-primary transition-all duration-300 h-56 md:h-72 flex flex-col">
+      <div className="group bg-white border border-gray-200 p-6 hover:bg-brand-primary hover:border-brand-primary transition-all duration-300 h-auto min-h-[16rem] md:h-72 flex flex-col">
         {/* Header: Logo + Job Type Badge */}
         <div className="flex justify-between items-start mb-3">
           {/* Company Logo */}
@@ -46,7 +46,7 @@ export function JobCard({ job }: JobCardProps) {
           </div>
 
           {/* Job Type Badge */}
-          <span className="font-epilogue px-3 py-1 text-xs font-medium bg-blue-50 text-brand-accent group-hover:bg-white/20 group-hover:text-white transition-colors">
+          <span className="font-epilogue px-3 py-1.5 text-xs font-medium border border-brand-primary text-brand-primary group-hover:text-white group-hover:border-white/50 transition-colors">
             {job.type}
           </span>
         </div>
@@ -67,7 +67,7 @@ export function JobCard({ job }: JobCardProps) {
         </div>
 
         {/* Job Description Preview - Truncate to 2 lines */}
-        <p className="hidden md:block font-epilogue text-gray-500 text-sm leading-relaxed mb-2 line-clamp-2 group-hover:text-white/80 transition-colors">
+        <p className="font-epilogue text-gray-500 text-sm leading-relaxed mb-2 line-clamp-2 group-hover:text-white/80 transition-colors">
           {job.description}
         </p>
 
