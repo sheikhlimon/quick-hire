@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export function CTASection() {
   return (
@@ -17,9 +18,9 @@ export function CTASection() {
             </p>
 
             {/* CTA Button */}
-            <button className="bg-white text-brand-primary px-8 py-3 font-semibold text-base hover:bg-gray-50 transition-colors duration-200 w-fit">
+            <Link href="/signup" className="bg-white text-brand-primary px-8 py-3 font-semibold text-base hover:bg-gray-50 transition-colors duration-200 w-fit">
               Sign Up For Free
-            </button>
+            </Link>
           </div>
 
           {/* Right Image - Positioned at bottom on desktop */}
