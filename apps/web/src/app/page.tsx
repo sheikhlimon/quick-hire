@@ -10,7 +10,7 @@ import { FeaturedJobs } from "@/components/FeaturedJobs";
 import { LatestJobs } from "@/components/LatestJobs";
 import { Footer } from "@/components/Footer";
 import { Spinner } from "@/components/Spinner";
-import { getCategories, getFeaturedJobs, getLatestJobs } from "@/lib/api";
+import { getHomeData } from "@/lib/api";
 import type { Job } from "@/lib/api";
 import toast from "react-hot-toast";
 
@@ -23,15 +23,10 @@ export default function HomePage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const [categoriesData, featuredData, latestData] = await Promise.all([
-          getCategories(),
-          getFeaturedJobs(),
-          getLatestJobs(),
-        ]);
-
-        setCategories(categoriesData);
-        setFeaturedJobs(featuredData);
-        setLatestJobs(latestData);
+        const data = await getHomeData();
+        setCategories(data.categories);
+        setFeaturedJobs(data.featuredJobs);
+        setLatestJobs(data.latestJobs);
       } catch (error) {
         console.error("Failed to fetch data:", error);
         toast.error("Failed to load jobs. Please try refreshing.");
