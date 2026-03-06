@@ -3,7 +3,9 @@ import Link from "next/link";
 
 export function CTASection() {
   return (
-    <section className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 max-w-6xl bg-brand-primary py-12 md:py-16 relative" style={{ clipPath: 'polygon(70px 0, 100% 0, 100% calc(100% - 70px), calc(100% - 70px) 100%, 0 100%, 0 70px)' }}>
+    <section className="w-full py-12 md:py-16">
+      <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 max-w-[1920px]">
+        <div className="bg-brand-primary py-12 md:py-16 px-6 md:px-12 relative" style={{ clipPath: 'polygon(100px 0, 100% 0, 100% calc(100% - 100px), calc(100% - 100px) 100%, 0 100%, 0 100px)' }}>
         <div className="flex flex-col md:flex-row items-start gap-6 md:gap-12">
           {/* Left Content */}
           <div className="w-full md:max-w-md flex flex-col gap-6 pt-8 pb-16">
@@ -34,6 +36,8 @@ export function CTASection() {
             />
           </div>
         </div>
+      </div>
+      </div>
     </section>
   );
 }
