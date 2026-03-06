@@ -11,6 +11,7 @@ export const jobSchema = z.object({
   company: z.string().min(1, "Company is required"),
   location: z.string().min(1, "Location is required"),
   category: z.string().min(1, "Category is required"),
+  subCategory: z.string().optional(),
   type: z.enum(jobTypes, {
     message: "Type must be Full-time, Part-time, Contract, Internship, or Remote",
   }),

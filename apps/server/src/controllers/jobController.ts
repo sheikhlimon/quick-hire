@@ -63,7 +63,7 @@ export async function getJobById(req: Request, res: Response): Promise<void> {
 
 export async function createJob(req: Request, res: Response): Promise<void> {
   try {
-    const { title, company, location, category, type, description, salary } = req.body;
+    const { title, company, location, category, subCategory, type, description, salary } = req.body;
 
     const job = await prisma.job.create({
       data: {
@@ -71,6 +71,7 @@ export async function createJob(req: Request, res: Response): Promise<void> {
         company,
         location,
         category,
+        subCategory: subCategory || null,
         type,
         description,
         salary: salary || null,
