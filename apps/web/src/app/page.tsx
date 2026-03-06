@@ -41,8 +41,8 @@ export default function HomePage() {
       const toastShown = sessionStorage.getItem("hostingToastShown");
       if (!toastShown) {
         setTimeout(() => {
-          toast("Server warming up - initial load may take a moment on free tier hosting", {
-            duration: 4000,
+          toast("Server warming up - initial load may take up to 50 seconds on free tier hosting", {
+            duration: 6000,
             icon: "⚡",
           });
           sessionStorage.setItem("hostingToastShown", "true");
