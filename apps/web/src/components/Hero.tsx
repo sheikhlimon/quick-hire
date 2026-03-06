@@ -25,10 +25,10 @@ export function Hero() {
   };
 
   return (
-    <section className="bg-hero-bg w-full min-h-[600px] md:min-h-[700px] lg:min-h-screen relative overflow-hidden">
+    <section className="bg-hero-bg w-full min-h-[600px] md:min-h-[700px] lg:min-h-screen relative overflow-hidden max-w-[1920px] mx-auto">
       {/* Content */}
-      <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 min-h-[600px] md:min-h-[700px] lg:min-h-screen relative z-10">
-        <div className="flex flex-col justify-center h-full max-w-md lg:max-w-2xl py-12 lg:py-16">
+      <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 2xl:px-32 min-h-[600px] md:min-h-[700px] lg:min-h-screen relative z-10">
+        <div className="flex flex-col justify-center h-full max-w-md lg:max-w-2xl xl:max-w-3xl py-12 lg:py-16">
           {/* Discover */}
           <h2 className="font-clash-display font-semibold text-5xl md:text-6xl lg:text-7xl text-gray-900 mb-0.5">
             Discover
@@ -161,7 +161,7 @@ export function Hero() {
       {/* Images - OUTSIDE content container */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Pattern SVG */}
-        <div className="hidden lg:block absolute top-0 right-0 w-[50vw] h-full">
+        <div className="hidden lg:block absolute top-0 right-0 w-[50vw] xl:w-[600px] 2xl:w-[700px] h-full">
           <Image
             src="/assets/patter-bg.svg"
             alt=""
@@ -170,13 +170,13 @@ export function Hero() {
           />
         </div>
 
-        {/* Hero Image */}
-        <div className="hidden lg:block absolute top-0 right-[-100px] w-[45vw] h-full">
+        {/* Hero Image - touches right and bottom, extends past container */}
+        <div className="hidden lg:block absolute bottom-0 right-0 w-[50vw] xl:w-[700px] 2xl:w-[850px] h-full">
           <Image
             src="/assets/hero-bg.png"
             alt=""
             fill
-            className="object-contain"
+            className="object-contain object-bottom object-right"
           />
         </div>
       </div>
