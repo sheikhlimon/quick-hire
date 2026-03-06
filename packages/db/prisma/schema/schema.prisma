@@ -16,6 +16,7 @@ model Job {
   company     String
   location    String
   category    String
+  subCategory String?       @default("")
   type        String        // Full-time, Part-time, Contract, Internship
   description String
   salary      String?

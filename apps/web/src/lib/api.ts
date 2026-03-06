@@ -6,6 +6,7 @@ export interface Job {
   company: string;
   location: string;
   category: string;
+  subCategory?: string;
   type: string;
   description: string;
   salary?: string;

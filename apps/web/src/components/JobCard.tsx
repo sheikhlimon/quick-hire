@@ -2,25 +2,13 @@ import Image from "next/image";
 import { MapPinIcon } from "@heroicons/react/24/outline";
 import type { Job } from "@/lib/api";
 import Link from "next/link";
-
-const getCategoryStyles = (category: string): { bg: string; text: string } => {
-  const styles: Record<string, { bg: string; text: string }> = {
-    Marketing: { bg: "bg-orange-100", text: "text-orange-700" },
-    Design: { bg: "bg-green-100", text: "text-green-700" },
-    Technology: { bg: "bg-red-100", text: "text-red-700" },
-    Business: { bg: "bg-purple-100", text: "text-purple-700" },
-    Sales: { bg: "bg-blue-100", text: "text-blue-700" },
-  };
-  return styles[category] || { bg: "bg-gray-100", text: "text-gray-700" };
-};
+import { getBadgeStyles } from "@/lib/badgeStyles";
 
 interface JobCardProps {
   job: Job;
 }
 
 export function JobCard({ job }: JobCardProps) {
-  const categoryStyles = getCategoryStyles(job.category);
-
   return (
     <Link href={`/jobs/${job.id}`}>
       <div className="group bg-white border border-gray-200 p-6 hover:bg-brand-primary hover:border-brand-primary transition-all duration-300 h-full flex flex-col">
@@ -77,7 +65,7 @@ export function JobCard({ job }: JobCardProps) {
         {/* Category Tag */}
         <div>
           <span
-            className={`font-epilogue px-4 py-1.5 rounded-full text-xs font-medium ${categoryStyles.bg} ${categoryStyles.text} group-hover:bg-white/20 group-hover:text-white transition-colors`}
+            className={`font-epilogue px-4 py-1.5 rounded-full text-xs font-medium ${getBadgeStyles(job.category).bg} ${getBadgeStyles(job.category).text} group-hover:bg-white/20 group-hover:text-white transition-colors`}
           >
             {job.category}
           </span>
