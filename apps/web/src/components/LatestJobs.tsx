@@ -30,8 +30,8 @@ const getJobTypeStyles = (type: string): { bg: string; text: string } => {
 
 export function LatestJobs({ jobs = [] }: LatestJobsProps) {
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28">
+    <section className="py-16 bg-hero-bg relative [clip-path:polygon(120px_0,_100%_0,_100%_100%,_0_100%,_0_60px)]">
+      <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 pl-8 md:pl-12">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <h2 className="font-clash-display font-semibold text-3xl md:text-5xl">
