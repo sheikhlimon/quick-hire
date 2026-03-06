@@ -1,8 +1,9 @@
 "use client";
 
-import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import type { Job } from "@/lib/api";
 import { JobCard } from "./JobCard";
+import { SectionHeader } from "./SectionHeader";
+import { ShowAllJobsLink } from "./ShowAllJobsLink";
 
 interface FeaturedJobsProps {
   jobs?: Job[];
@@ -14,19 +15,13 @@ export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
     <section className="py-16 bg-white max-w-[1920px] mx-auto">
       <div className="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28">
         {/* Header */}
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="font-clash-display font-semibold text-3xl md:text-5xl tracking-tight">
-            <span className="text-text-primary">Featured</span>
-            <span className="text-brand-accent"> jobs</span>
-          </h2>
-          <a
-            href="/jobs"
-            className="hidden md:flex text-brand-primary font-medium items-center gap-2 text-sm md:text-base"
-          >
-            Show all jobs
-            <ChevronRightIcon className="w-4 h-4" />
-          </a>
-        </div>
+        <SectionHeader
+          titleParts={[
+            { text: "Featured" },
+            { text: " jobs", accent: true }
+          ]}
+          className="mb-8"
+        />
 
         {/* Mobile: Horizontal scroll carousel */}
         <div className="md:hidden">
@@ -56,15 +51,7 @@ export function FeaturedJobs({ jobs = [] }: FeaturedJobsProps) {
         </div>
 
         {/* Mobile: Show all jobs after cards */}
-        <div className="md:hidden flex justify-start mt-6">
-          <a
-            href="/jobs"
-            className="flex text-brand-primary font-medium items-center gap-2 text-sm"
-          >
-            Show all jobs
-            <ChevronRightIcon className="w-4 h-4" />
-          </a>
-        </div>
+        <ShowAllJobsLink />
       </div>
     </section>
   );

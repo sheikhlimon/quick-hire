@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { MapPinIcon } from "@heroicons/react/24/outline";
 import type { Job } from "@/lib/api";
 import Link from "next/link";
 import { getBadgeStyles } from "@/lib/badgeStyles";
+import { CompanyLogo } from "./CompanyLogo";
 
 interface JobCardProps {
   job: Job;
@@ -15,23 +15,7 @@ export function JobCard({ job }: JobCardProps) {
         {/* Header: Logo + Job Type Badge */}
         <div className="flex justify-between items-start mb-3">
           {/* Company Logo */}
-          <div className="flex-shrink-0">
-            {job.logo ? (
-              <Image
-                src={job.logo}
-                alt={job.company}
-                width={48}
-                height={48}
-                className="rounded-full w-12 h-12"
-              />
-            ) : (
-              <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-white/20 transition-colors">
-                <span className="text-brand-primary font-semibold text-base">
-                  {job.company.charAt(0)}
-                </span>
-              </div>
-            )}
-          </div>
+          <CompanyLogo logo={job.logo} companyName={job.company} className="w-12 h-12" groupHover />
 
           {/* Job Type Badge */}
           <span className="font-epilogue px-3 py-1.5 text-xs font-medium border border-brand-primary text-brand-primary group-hover:text-white group-hover:border-white/50 transition-colors">
