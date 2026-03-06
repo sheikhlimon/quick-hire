@@ -22,12 +22,14 @@ export function CTASection() {
               </p>
 
               {/* CTA Button */}
-              <Link
-                href="/signup"
-                className="bg-white text-brand-primary px-8 py-4 font-semibold text-base hover:bg-gray-50 transition-colors duration-200 w-full md:w-fit"
-              >
-                Sign Up For Free
-              </Link>
+              <div className="flex justify-center md:justify-start">
+                <Link
+                  href="/signup"
+                  className="bg-white text-brand-primary px-8 py-4 font-semibold text-base hover:bg-gray-50 transition-colors duration-200 w-full md:w-fit"
+                >
+                  Sign Up For Free
+                </Link>
+              </div>
             </div>
           </div>
 
