@@ -31,7 +31,7 @@ const getJobTypeStyles = (type: string): { bg: string; text: string } => {
 export function LatestJobs({ jobs = [] }: LatestJobsProps) {
   return (
     <section className="py-16 bg-hero-bg relative [clip-path:polygon(120px_0,_100%_0,_100%_100%,_0_100%,_0_60px)]">
-      <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 pl-8 md:pl-12">
+      <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <h2 className="font-clash-display font-semibold text-3xl md:text-5xl">
@@ -139,7 +139,7 @@ export function LatestJobs({ jobs = [] }: LatestJobsProps) {
                       <div className="flex items-center gap-2 text-text-secondary mb-4 group-hover:text-white/90 transition-colors">
                         <span className="font-epilogue text-sm">{job.company}</span>
                         <span className="text-gray-300 group-hover:text-white/50">•</span>
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-1 flex-shrink-0">
                           <MapPinIcon className="w-3 h-3" />
                           <span className="font-epilogue text-sm">{job.location}</span>
                         </div>

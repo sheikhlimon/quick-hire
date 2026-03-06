@@ -5,10 +5,10 @@ export function CTASection() {
   return (
     <section className="w-full py-1 md:py-2">
       <div className="mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-28 max-w-[1920px]">
-        <div className="bg-brand-primary py-8 md:py-10 px-6 md:px-12 relative [clip-path:polygon(120px_0,_100%_0,_100%_calc(100%_-_60px),_calc(100%_-_120px)_100%,_0_100%,_0_60px)]">
-          <div className="flex flex-col md:flex-row items-start gap-6 md:gap-12">
+        <div className="bg-brand-primary py-12 md:py-16 px-6 md:px-12 relative [clip-path:polygon(120px_0,_100%_0,_100%_calc(100%_-_60px),_calc(100%_-_120px)_100%,_0_100%,_0_60px)]">
+          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
             {/* Left Content */}
-            <div className="w-full md:max-w-md flex flex-col gap-6 pt-8 pb-[280px] md:pb-32">
+            <div className="w-full md:max-w-md flex flex-col gap-6 pt-8 pb-[260px] md:py-0">
               {/* Heading */}
               <h2 className="font-clash-display font-semibold text-4xl md:text-5xl text-white leading-none">
                 Start posting
@@ -45,8 +45,8 @@ export function CTASection() {
             <Image
               src="/assets/admin.png"
               alt="Admin hiring illustration"
-              width={550}
-              height={350}
+              width={480}
+              height={300}
               className="h-auto w-auto hidden md:block"
             />
           </div>
