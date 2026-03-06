@@ -9,7 +9,6 @@ import { CTASection } from "@/components/CTASection";
 import { FeaturedJobs } from "@/components/FeaturedJobs";
 import { LatestJobs } from "@/components/LatestJobs";
 import { Footer } from "@/components/Footer";
-import { Spinner } from "@/components/Spinner";
 import { getHomeData } from "@/lib/api";
 import type { Job } from "@/lib/api";
 import toast from "react-hot-toast";
@@ -68,8 +67,12 @@ export default function HomePage() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {[...Array(8)].map((_, i) => (
-                  <div key={i} className="bg-gray-50 border border-gray-100 rounded-lg p-6 h-48 flex items-center justify-center">
-                    <Spinner size="md" />
+                  <div key={i} className="bg-gray-50 border border-gray-100 rounded-lg p-6 h-48">
+                    <div className="animate-pulse space-y-3">
+                      <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+                      <div className="h-3 bg-gray-200 rounded w-1/2"></div>
+                      <div className="h-3 bg-gray-200 rounded w-1/3"></div>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -83,8 +86,11 @@ export default function HomePage() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
                 {[...Array(6)].map((_, i) => (
-                  <div key={i} className="bg-white border border-gray-100 rounded-lg p-6 h-32 flex items-center justify-center">
-                    <Spinner size="sm" />
+                  <div key={i} className="bg-white border border-gray-100 rounded-lg p-6 h-32">
+                    <div className="animate-pulse space-y-3">
+                      <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+                      <div className="h-3 bg-gray-200 rounded w-1/2"></div>
+                    </div>
                   </div>
                 ))}
               </div>
