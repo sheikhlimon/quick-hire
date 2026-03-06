@@ -19,7 +19,7 @@ export function Button({
   type = "button",
   disabled = false,
 }: ButtonProps) {
-  const baseStyles = "rounded-md px-6 py-2 font-medium transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed";
+  const baseStyles = "rounded-md px-6 py-2 font-medium transition-colors duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed";
 
   const variantStyles: Record<ButtonVariant, string> = {
     primary: "bg-indigo-500 text-white hover:bg-indigo-600",
